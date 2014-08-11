@@ -1,0 +1,145 @@
+.panel-heading.main-subtabs-6 {
+  background-color: ;
+}
+.panel-body.main-subtabs-6 {
+  background-color: ;
+}
+.panel-heading.main-subtabs-5 {
+  background-color: rgba(255, 158, 78, 0.2);
+}
+.panel-body.main-subtabs-5 {
+  background-color: rgba(255, 158, 78, 0.05);
+}
+.panel-heading.main-subtabs-4 {
+  background-color: rgba(215, 102, 255, 0.2);
+}
+.panel-body.main-subtabs-4 {
+  background-color: rgba(215, 102, 255, 0.05);
+}
+.panel-heading.main-subtabs-3 {
+  background-color: rgba(255,255,0, 0.2);
+}
+.panel-body.main-subtabs-3 {
+  background-color: rgba(255,255,0, 0.05);
+}
+.panel-heading.main-subtabs-2 {
+  background-color: rgba(0,255,0, 0.2);
+}
+.panel-body.main-subtabs-2 {
+  background-color: rgba(0,255,0, 0.05);
+}
+.panel-heading.main-subtabs-1 {
+  background-color: rgba(255,0,0, 0.2);
+}
+.panel-body.main-subtabs-1 {
+  background-color: rgba(255,0,0, 0.05);
+}
+.panel-heading.main-subtabs-0 {
+  background-color: rgba(0,255,255, 0.2);
+}
+.panel-body.main-subtabs-0 {
+  background-color: rgba(0,255,255, 0.05);
+}
+.submenu-tab-6 {
+  background-color: ;
+}
+.submenu-tab-6 .panel-heading {
+  background-color: ;
+}
+.submenu-tab-6 .panel-body {
+  background-color: ;
+}
+.submenu-tab-5 {
+  background-color: rgba(255, 158, 78, 0.2);
+}
+.submenu-tab-5 .panel-heading {
+  background-color: rgba(255, 158, 78, 0.15);
+}
+.submenu-tab-5 .panel-body {
+  background-color: rgba(255, 158, 78, 0.05);
+}
+.submenu-tab-4 {
+  background-color: rgba(215, 102, 255, 0.2);
+}
+.submenu-tab-4 .panel-heading {
+  background-color: rgba(215, 102, 255, 0.15);
+}
+.submenu-tab-4 .panel-body {
+  background-color: rgba(215, 102, 255, 0.05);
+}
+.submenu-tab-3 {
+  background-color: rgba(255,255,0, 0.2);
+}
+.submenu-tab-3 .panel-heading {
+  background-color: rgba(255,255,0, 0.15);
+}
+.submenu-tab-3 .panel-body {
+  background-color: rgba(255,255,0, 0.05);
+}
+.submenu-tab-2 {
+  background-color: rgba(0,255,0, 0.2);
+}
+.submenu-tab-2 .panel-heading {
+  background-color: rgba(0,255,0, 0.15);
+}
+.submenu-tab-2 .panel-body {
+  background-color: rgba(0,255,0, 0.05);
+}
+.submenu-tab-1 {
+  background-color: rgba(255,0,0, 0.2);
+}
+.submenu-tab-1 .panel-heading {
+  background-color: rgba(255,0,0, 0.15);
+}
+.submenu-tab-1 .panel-body {
+  background-color: rgba(255,0,0, 0.05);
+}
+.submenu-tab-0 {
+  background-color: rgba(0,255,255, 0.2);
+}
+.submenu-tab-0 .panel-heading {
+  background-color: rgba(0,255,255, 0.15);
+}
+.submenu-tab-0 .panel-body {
+  background-color: rgba(0,255,255, 0.05);
+}
+.panel-body .hint.alert {
+  margin-bottom: 2px;
+}
+.color-description {
+  border: none;
+}
+main-title {
+  font-size: 1.5em;
+}
+main-title .big {
+  display: inline-block;
+  font-size: 1.2em;
+}
+.second {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.main-container {
+  padding: 10px;
+}
+.toggle {
+  -webkit-transition: linear 1s;
+  -moz-transition: linear 1s;
+  -ms-transition: linear 1s;
+  -o-transition: linear 1s;
+  transition: linear 1s;
+}
+.toggle.ng-enter {
+  height: 0%;
+}
+.toggle.ng-enter-active {
+  height: 100%;
+}
+.toggle.ng-leave {
+  height: 100%;
+}
+.toggle.ng-leave-active {
+  height: 0%;
+}

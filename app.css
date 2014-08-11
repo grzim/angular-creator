@@ -1,0 +1,28 @@
+body{
+    
+    
+}
+.panel-heading.has-subtabs0, .panel-body.has-subtabs0{
+    background-color: rgba(0,255,255, 0.2);
+    color: black;
+}
+.panel-heading.has-subtabs1, .panel-body.has-subtabs1{
+    background-color: rgba(255,0,0, 0.2);
+    color: black;
+}
+.panel-heading.has-subtabs2, .panel-body.has-subtabs2{
+    background-color: rgba(0,255,0, 0.2);
+    color: black;
+}
+.panel-heading.has-subtabs3, .panel-body.has-subtabs3{
+    background-color: rgba(255,255,0, 0.2);
+    color: black;
+}
+.panel-heading.has-subtabs4, .panel-body.has-subtabs4{
+    background-color: rgba(215, 102, 255, 0.2);
+    color: black;
+}
+.panel-heading.has-subtabs5, .panel-body.has-subtabs5{
+    background-color: rgba(255, 158, 78, 0.2);
+    color: black;
+}

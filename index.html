@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <script src="angular.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers.js"></script>
+    <script src="filters.js"></script>
+    <script src="directives.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="tinymce.min.js"></script>
+    <script>
+        function text(){tinymce.init({selector:'textarea-wysiwyg'});}
+       
+    </script>
+    <title>Epic Mockup</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>  
+    <link href="style.css" rel="stylesheet" />
+    
+</head>
+<body ng-app="mainApp" ng-controller="MainCtrl">
+    <div ng-controller="QuestCtrl" class="quest-container" ng-show="section.quest">
+        <form role="form" class="col-sm-6" ng-click="text()">
+            <div class="first">
+              <!-- <tab name="main-menu" scope="mainTabs" level="tabs" number="" ng-init="init()"></tab>-->
+                <div ng-include="'summary.html'"></div>
+                <div ng-include="'tab.html'" ng-controller="tabCtrl" ng-init="tabInit('main menu','tabs',mainTabs)"></div>
+                <div ng-include="'facebook.html'"></div>
+                <button type="button" class="btn btn-primary" ng-click="generate()">Generate</button>      
+            </div>
+        </form>
+
+        <form role="form" class="col-sm-6">
+            <div  ng-repeat="tab in mainTabs.tab" >
+                <div  ng-show="($index==getActiveMainTab()) && (mainTabs.tab[$index].numberOfTabs!=0)">
+                    <div ng-include="'tab.html'" ng-controller="tabCtrl"  class="submenu-tab-{{$index}} second" ng-init="tabInit(tab.name,'subtabs',tab, $index)" ></div>
+                </div>
+            </div>
+        </form>     
+    </div>
+    <div ng-controller="PageCtrl" class="page-container" ng-show="section.page">
+        <div ng-include="'page.html'"></div>
+    </div>
+</body>
+</html>
+    

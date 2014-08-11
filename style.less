@@ -1,0 +1,121 @@
+// variables
+@main-tabs-num: 7;
+@sub-tabs-num: 7;
+@main-tabs-colors-head: 'rgba(0,255,255, 0.2)',
+                        'rgba(255,0,0, 0.2)',
+                        'rgba(0,255,0, 0.2)',
+                        'rgba(255,255,0, 0.2)',
+                        'rgba(215, 102, 255, 0.2)',
+                        'rgba(255, 158, 78, 0.2)';
+
+@main-tabs-colors-body: 'rgba(0,255,255, 0.05)',
+                        'rgba(255,0,0, 0.05)',
+                        'rgba(0,255,0, 0.05)',
+                        'rgba(255,255,0, 0.05)',
+                        'rgba(215, 102, 255, 0.05)',
+                        'rgba(255, 158, 78, 0.05)';
+
+@sub-tabs-colors-head: 'rgba(0,255,255, 0.15)',
+                        'rgba(255,0,0, 0.15)',
+                        'rgba(0,255,0, 0.15)',
+                        'rgba(255,255,0, 0.15)',
+                        'rgba(215, 102, 255, 0.15)',
+                        'rgba(255, 158, 78, 0.15)';
+
+
+// mixin with a guard to create a series of bamboo tiles
+.makeTitles(@i) when (@i > 0) {
+    @title-value: @i - 1;
+    // create the current tile rule
+    .panel-heading.main-subtabs-@{title-value} {
+        background-color: e(extract(@main-tabs-colors-head, @i));;
+    }
+    .panel-body.main-subtabs-@{title-value} {
+        background-color: e(extract(@main-tabs-colors-body, @i));;
+    }
+ 
+     // next iteration
+    .makeTitles((@i - 1));
+}
+ 
+// create bamboo tiles numbered 0-8
+.makeTitles(@main-tabs-num);
+
+// mixin with a guard to create a series of bamboo tiles
+.makeTiles(@i) when (@i > 0) {
+    @tile-value: @i - 1;
+    // create the current tile rule
+    .submenu-tab-@{tile-value}
+    {
+        background-color: e(extract(@main-tabs-colors-head, @i));
+        .panel-heading {
+            background-color: e(extract(@sub-tabs-colors-head, @i));
+        }
+        .panel-body {
+            background-color: e(extract(@main-tabs-colors-body, @i));
+        }
+    }
+ 
+     // next iteration
+    .makeTiles((@i - 1));
+}
+ 
+// create bamboo tiles numbered 0-8
+.makeTiles(@sub-tabs-num);
+
+.panel-body{
+    .hint.alert{
+        margin-bottom: 2px;
+    }
+}
+
+.color-description{
+    border: none;
+}
+
+
+main-title{
+    font-size: 1.5em;
+    .big{
+        display: inline-block;
+        font-size: 1.2em;
+    }
+}
+
+.first{
+}
+
+.second{
+    padding-left:10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+
+}
+
+.main-container{
+    padding:10px;
+}
+
+.toggle{
+  -webkit-transition: linear 1s;
+  -moz-transition: linear 1s;
+  -ms-transition: linear 1s;
+  -o-transition: linear 1s;
+  transition: linear 1s;
+}
+
+.toggle.ng-enter{
+  height: 0%;
+}
+
+.toggle.ng-enter-active{
+  height: 100%;
+}
+
+.toggle.ng-leave{
+  height: 100%;
+}
+
+.toggle.ng-leave-active{
+  height: 0%;
+}

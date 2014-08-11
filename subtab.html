@@ -1,0 +1,86 @@
+        <div class="form-group">
+            <label for="tabsNumber">Select number of {{name.value[i]}} subtabs:</label>
+            <select  class="form-control " ng-model = "subtabs.value[i]" ng-options="i for i in [1,2,3,4,5,6,7]"></select>
+        </div>
+        <div class="form-group">
+            <input type="text" ng-repeat="i in [] | range:subtabs.value[i]" class="form-control" placeholder="Tab {{i+1}} name" ng-model="name[i]">
+        </div>       
+        <div class="form-group maintabs tabs">
+            <div class="panel-group" id="accordion">
+             <div class="panel panel-default"  ng-repeat="i in [] | range:subtabs.value[i]" id="sub-panel{{i}}">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-target="#collapse{{i}}" href="#collapse{{i}}"  ng-model="panelHeading" ng-init="panelHeading=true"  ng-click="panelHeading=!panelHeading">
+                            Description of tab {{name[i]}} 
+                            <span class="col-xs-2 glyphicon" ng-class="{' glyphicon-chevron-up': panelHeading, ' glyphicon-chevron-down': !panelHeading }"></span> 
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse{{i}}" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <label for="tab{{i+1}}-text"> Main text:</label>
+                        <textarea class="form-control" rows="3" placeholder="Put text here" ></textarea>
+                        <div class="checkbox">
+                            <label><input type="checkbox" ng-model="photoCheckbox">Photo</label>
+                            <label><input type="checkbox" ng-model="videoCheckbox">Video</label>
+                            <label><input type="checkbox" ng-model="galleryCheckbox">Gallery</label>
+                            <label><input type="checkbox" ng-model="contactCheckbox">Contact Form</label>
+                        </div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li ng-show="photoCheckbox" class="active"><a data-toggle="tab" href="#photo{{tabs.number}}{{i}}">Photo</a></li>
+                            <li ng-show="videoCheckbox"><a data-toggle="tab" href="#video{{tabs.number}}{{i}}">Video</a></li>
+                            <li ng-show="galleryCheckbox"><a data-toggle="tab" href="#gallery{{tabs.number}}{{i}}">Gallery</a></li>
+                            <li ng-show="contactCheckbox"><a data-toggle="tab" href="#contact{{tabs.number}}{{i}}">Contact</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="photo{{tabs.number}}{{i}}" class="picture{{i}} tab-pane fade in active" ng-show="photoCheckbox">
+                                <br>
+                                <label>Number of pictures:</label>
+                                <input type="number" min="1" max="3" ng-model="pictureNumber"  ng-init="pictureNumber=1">
+                                <div class="form-group" ng-repeat="i in [] | range:pictureNumber">
+                                    <label for="exampleInputFile">Select picture from disc:</label>
+                                    <input type="file" class="picture-file-{{i}}" ng-model="pictureFile">
+                                    <input type="text" class="form-control picture-title-{{i}}" 
+                                           placeholder="Photo title" ng-model="pictureTitle">
+                                    <textarea class="form-control picture-description-{{i}}" rows="2" 
+                                              placeholder="Photo description" ng-model="pictureDescription"></textarea>
+                                </div>    
+                            </div>
+                            <div id="video{{tabs.number}}{{i}}" class=" video{{i}} tab-pane fade " ng-show="videoCheckbox">
+                                <br>
+                                <input type="url" class="form-control video-url-{{i}}" placeholder="Video url">
+                                <input type="text" class="form-control video-title-{{i}}" placeholder="Video title">
+                                <textarea class="form-control video-description-{{i}}" rows="2" placeholder="Video description" ></textarea>
+                            </div>                  
+                            <div id="gallery{{tabs.number}}{{i}}"  class="tab-pane fade"  ng-show="galleryCheckbox">
+                                <br>
+                                <label for="tab{{i+1}}">Select number of photos in a gallery:</label>
+                                <input type="number" min="2" max="20" ng-model="gallerySize"  ng-init="gallerySize=5">
+                                <div class="form-group gallery{{i}}" ng-repeat="i in [] | range:gallerySize">
+                                    <label for="exampleInputFile">Select picture from disc:</label>
+                                    <input type="file" id="photoTab{{i}}" class="gallery-file-{{i}}">
+                                    <input type="text" class="form-control gallery-title-{{i}}" placeholder="Picture title">
+                                    <textarea class="form-control gallery-description-{{i}}" rows="2" placeholder="Picture description" ></textarea>
+                                </div>
+                            </div>
+                            <div id="contact{{tabs.number}}{{i}}" class="tab-pane fade " ng-show="contactCheckbox">
+                                <br>
+                                <textarea class="form-control contact-general" rows="3" placeholder="General contact informations" ></textarea>
+                                <input type="email" class="form-control contact-email" placeholder="email address">
+                                <input type="number" class="form-control contact-phone" placeholder="phone number">
+                                <label><input type="checkbox" ng-model="facebookSite">Facebook</label>
+                                <label><input type="checkbox" ng-model="youtubeSite">Youtube</label>
+                                <label><input type="checkbox" ng-model="twitterSite">Twitter</label>
+                                <label><input type="checkbox" ng-model="map">Map</label>
+                                <input type="url" class="form-control contact-facebook" placeholder="facebook url" ng-show="facebookSite">                            
+                                <input type="url" class="form-control contact-youtube" placeholder="youtube url" ng-show="youtubeSite">                              
+                                <input type="url" class="form-control contact-twitter" placeholder="twitter @" ng-show="twitterSite">
+                                <input type="number" step="any"  class="form-control contact-x-pos" placeholder="X-pos" ng-show="map">
+                                <input type="number" step="any"  class="form-control contact-y-pos" placeholder="Y-pos" ng-show="map">
+                            </div>
+                        </div>  
+                    </div>                
+                 </div>                      
+               </div>        
+            </div>
+        </div>

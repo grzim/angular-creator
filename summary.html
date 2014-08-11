@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+    <div class="panel-heading"><label>Summary</label></div>
+    <div class="panel-body">
+    <label>
+       Page name: 
+    </label>
+    <input type="text" ng-model="summary.name" placeholder="">
+    <span class="glyphicon glyphicon-info-sign" ng-mouseover="showHint('name')" ng-mouseleave="hideHint('name')"></span>
+    <br><small>www.pureepic.eu/{{summary.name}}</small>
+    <div class="panel-body" role="alert" ng-show="hints.name">
+         <div class="hint alert alert-info" role="alert">
+            Your page will be stored under www.pureepic.eu/[Page name]<br>
+            You can also alias your page via www.[Page name].[domain] . ->Click here for more information.
+         </div>
+    </div> 
+    <div class="checkbox">
+    <label><input type="checkbox" ng-model="logoCheckbox">Logo</label>
+    </div>
+    <div ng-show="logoCheckbox">
+        <label for="exampleInputFile">Select picture from disc:</label>
+        <input type="file" id="logo" ng-model="summary.logo">
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox" ng-model="catchpraseCheckbox">Catchprase</label>
+    </div>
+    <input ng-show="mottoCheckbox" type="text" class="form-control" placeholder="Catchprase" ng-model="summary.catchprase">
+    <div class="checkbox">    
+        <label><input type="checkbox" ng-model="colorsCheckbox">Custom colors</label>
+    </div>  
+    <div ng-repeat="color in summary.colors track by $index" ng-show="colorsCheckbox">
+        <input type="color" class="col-sm-4 " ng-model="color">              
+    </div>
+    <div ng-repeat="color in summary.colors track by $index" ng-show="colorsCheckbox">
+        <input type="text"  ng-model="color" placeholder="select a color or paste a value" class="col-sm-4 color-description ">
+    </div>
+    </div>
+</div>
