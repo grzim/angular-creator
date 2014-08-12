@@ -1,28 +1,57 @@
-mainApp.directive('tab',function(){
+mainApp.directive('tab',function(constants){
 
     return{
         restrict: 'EA',
         scope: {
-            scope: "=scope",
-            name: "=name",
-            level: "=level",
-            tabNumber: "=number" || "",
-            init: function(){
-                var that = this;console.log(this);
-                this.pointer = {
-                    scope: that.scope,
-                    name: that.name,
-                    level: that.level,
-                    tabNumber: that.tabNumber
-                }
-                this.pointer.scope.init();
-                console.log(this);
-            }
+            obj: "=name",
+            index: "="
+        },
+        link: function(scope) {
+            scope.constants = constants;
+            scope.pointer = {};
+            scope.pointer.name = scope.obj.name;
+            scope.pointer.level = scope.obj.level;
+            scope.pointer.scope = scope.obj;
+            scope.pointer.tabNumber = scope.index || "";
+            scope.pointer.scope.init();
+            console.log(scope.pointer.scope);
         },
         templateUrl: 'tab.html'
     }
 });
+mainApp.directive('hintBox', function(serviceHints){
+    return{
+        restrict: 'EA',
+        scope:{
+            name: "="
+        },
+        controller: function($scope){
+            $scope.status = serviceHints.hints
+        },
+        transclude: true,
+        template: '<div ng-show="status[name]" class="hint alert alert-info" ng-transclude role="alert"></div>'
+    }
+});
 
+mainApp.directive('hintButton',function(serviceHints){
+    return {
+        restrict: 'EA',
+        scope: {
+            name: "="
+        },
+        link: function(scope, element, attr){
+       //     element.addClass("message-disabled");
+            element.css({'cursor':'pointer'});
+            element.on("click",function(){
+                serviceHints.toggle(scope.name, element);
+                console.log(serviceHints.hints[scope.name]);
+            })
+        },
+        replace: true,
+        template: '<span class="glyphicon glyphicon-info-sign message-disabled"></span>'
+
+    }
+});
 mainApp.directive("fileread", [function () {
     return {
         scope: {

@@ -24,7 +24,7 @@
             <div class="first">
               <!-- <tab name="main-menu" scope="mainTabs" level="tabs" number="" ng-init="init()"></tab>-->
                 <div ng-include="'summary.html'"></div>
-                <div ng-include="'tab.html'" ng-controller="tabCtrl" ng-init="tabInit('main menu','tabs',mainTabs)"></div>
+                <tab name="mainTabs"></tab>
                 <div ng-include="'facebook.html'"></div>
                 <button type="button" class="btn btn-primary" ng-click="generate()">Generate</button>      
             </div>
@@ -32,8 +32,8 @@
 
         <form role="form" class="col-sm-6">
             <div  ng-repeat="tab in mainTabs.tab" >
-                <div  ng-show="($index==getActiveMainTab()) && (mainTabs.tab[$index].numberOfTabs!=0)">
-                    <div ng-include="'tab.html'" ng-controller="tabCtrl"  class="submenu-tab-{{$index}} second" ng-init="tabInit(tab.name,'subtabs',tab, $index)" ></div>
+                <div  ng-show="($index==getActiveMainTab()) && (mainTabs.tab[$index].numberOfTabs!=0)" class="submenu-tab-{{$index}} second">
+                    <tab name = "tab"   index ="$index" ></tab>
                 </div>
             </div>
         </form>     

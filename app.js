@@ -1,6 +1,20 @@
 var mainApp = angular.module("mainApp", []);
 
-
+mainApp.service("serviceHints",function(constants){
+    var that = this;
+    this.hints = {};
+    this.show = constants.rootTabName;
+    this.toggle = function(name, element){
+        if(angular.isUndefined(that.hints[name])){
+            that.hints[name] = true;
+        }
+        else {
+            that.hints[name] = !that.hints[name];
+        }
+        element.toggleClass("message-active");
+        element.toggleClass("message-disabled");
+    }
+})
 mainApp.service("sharedProperties",function(){
     var pageData = {};
     var retriveFromLocalStorage = (function(){
@@ -40,7 +54,9 @@ mainApp.constant("constants",{
     maxPictures : 3,
     maxGallery : 18,
     startPictures: 1,
-    startGallery: 5
+    startGallery: 5,
+    rootTabName: 'main menu',
+    rootTabLevelName: 'tabs'
 })
 
 function r(val){
@@ -49,6 +65,7 @@ function r(val){
 
 function arrayInterface(obj, arrayName){
     this[arrayName] = [];
+
     var array = this[arrayName];
     this.push = function(){
         var element = new obj();

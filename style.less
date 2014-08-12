@@ -22,7 +22,12 @@
                         'rgba(215, 102, 255, 0.15)',
                         'rgba(255, 158, 78, 0.15)';
 
-
+.message-active{
+  color: rgb(49, 112, 143);
+}
+.message-disabled{
+  color: black;
+}
 // mixin with a guard to create a series of bamboo tiles
 .makeTitles(@i) when (@i > 0) {
     @title-value: @i - 1;

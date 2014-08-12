@@ -5,13 +5,13 @@
        Page name: 
     </label>
     <input type="text" ng-model="summary.name" placeholder="">
-    <span class="glyphicon glyphicon-info-sign" ng-mouseover="showHint('name')" ng-mouseleave="hideHint('name')"></span>
+    <hint-button name="'name'"></hint-button>
     <br><small>www.pureepic.eu/{{summary.name}}</small>
-    <div class="panel-body" role="alert" ng-show="hints.name">
-         <div class="hint alert alert-info" role="alert">
+    <div class="panel-body">
+        <hint-box name="'name'">
             Your page will be stored under www.pureepic.eu/[Page name]<br>
             You can also alias your page via www.[Page name].[domain] . ->Click here for more information.
-         </div>
+         </hint-box>
     </div> 
     <div class="checkbox">
     <label><input type="checkbox" ng-model="logoCheckbox">Logo</label>

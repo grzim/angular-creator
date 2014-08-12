@@ -39,8 +39,10 @@ mainApp.controller("QuestCtrl",function($scope, constants, sharedProperties){
     }
     $scope.mainTabs = {
         maxNumberOfTabs: constants.mainTabsNumber,
+        activeMainTab: "",
+        level: 'tabs',
         numberOfTabs: 0,
-        name: "main menu",
+        name: constants.rootTabName,
         init : function(){
             arrayInterface.call(this, Tab, "tab");
             this.update(1);
@@ -66,7 +68,7 @@ mainApp.controller("QuestCtrl",function($scope, constants, sharedProperties){
         if(level==="tabs") $scope.activeMainTab=tab;
     }
     $scope.getActiveMainTab = function(){
-        return $scope.activeMainTab;
+        return $scope.mainTabs.activeMainTab;
     }
     $scope.generate = function(){
         var pageData = {
@@ -84,6 +86,9 @@ mainApp.controller("QuestCtrl",function($scope, constants, sharedProperties){
         // window.location = "/page.html"
 
     }
+    $scope.toggleHint = function(elem){
+        $scope.hints[elem] =  !$scope.hints[elem];
+    },
     $scope.showHint = function(elem){
         $scope.hints[elem] =  true;
     }
@@ -94,7 +99,7 @@ mainApp.controller("QuestCtrl",function($scope, constants, sharedProperties){
 
     function Tab(){
         SubTab.call(this);
-        this.level = "main tab";
+        this.level = "subtabs";
         arrayInterface.call(this, SubTab,  "tab");
         this.maxNumberOfTabs = constants.subTabsNumber;
         this.numberOfTabs = 0;

@@ -1,3 +1,9 @@
+.message-active {
+  color: #31708f;
+}
+.message-disabled {
+  color: black;
+}
 .panel-heading.main-subtabs-6 {
   background-color: ;
 }

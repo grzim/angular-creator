@@ -1,12 +1,19 @@
 
         <div class="form-group">
             <label for="tabsNumber" ng-show="pointer.scope.numberOfTabs">
+
+                <hint-button ng-if="pointer.name=='main menu'" name="'mainMenu'"></hint-button>
+                
                 <main-title>Select number of <div class="big">{{pointer.scope.name}}</div> {{pointer.level}}: </main-title>
-                <span  ng-if="pointer.name=='main menu'" class="glyphicon glyphicon-info-sign" ng-mouseover="showHint('mainMenu')" ng-mouseleave="hideHint('mainMenu')"></span>
-            </label>
-            <div ng-if="pointer.level=='tabs'" class="hint alert alert-info" role="alert" ng-show="hints.mainMenu"> <!-- change to custom directive-->
-                Select number of items in main navigation bar (menu)
-            </div> 
+             </label>
+
+
+            <hint-box ng-if="pointer.level=='tabs'" name="'mainMenu'">Select number of items in main navigation bar (menu)</hint-box>
+
+
+
+
+
 <!--select number of tabs-->
             <select  class="form-control " ng-model = "pointer.scope.numberOfTabs" ng-options="i for i in ([1,2,3,4,5,6,7] | limitTo : constants.mainTabsNumber)" ng-change="pointer.scope.update(pointer.scope.numberOfTabs)" ng-show="pointer.scope.numberOfTabs"></select>
         </div>
@@ -32,15 +39,15 @@
                 <div id="collapse{{i}}" class="panel-collapse collapse in">
                     <div class="panel-body"  ng-class="{'main-subtabs-{{i}}': subtabsCheckbox }">
 <!--generation of subtabs -->
-                        <label >
+                        <label>
                             <input  type="checkbox" ng-model="subtabsCheckbox">
-                            Subtabs 
-                            <span ng-show="(i==0)" class="glyphicon glyphicon-info-sign" ng-mouseover="showHint('subtabs')" ng-mouseleave="hideHint('subtabs')"></span>
+                            Subtabs
                         </label>
+                        <hint-button name="'subTabs'"></hint-button>
                         <input ng-if="pointer.level=='tabs'"  ng-show="subtabsCheckbox" type="number" min="0" max="{{constants.subTabsNumber}}" ng-model="pointer.scope.tab[i].numberOfTabs" ng-change="pointer.scope.tab[i].update(pointer.scope.tab[i].numberOfTabs)">
-                        <div  ng-if="pointer.level=='tabs'" class="hint alert alert-info" role="alert" ng-show="hints.subtabs">
+                        <hint-box name="'subTabs'"  ng-if="pointer.level=='tabs'">
                             Select if you wish to have a submenu in this tab
-                        </div> 
+                        </hint-box>
                         <div ng-if="pointer.level=='tabs'">
                             <small ng-show="subtabsCheckbox">When you leave all of below blank it will be considered just as a name for subtabs</small>
                         </div>
