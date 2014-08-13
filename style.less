@@ -124,3 +124,30 @@ main-title{
 .toggle.ng-leave-active{
   height: 0%;
 }
+
+.section{
+  line-height:100%;
+  opacity: 1;
+}
+
+.section.ng-hide-add.ng-hide-add-active,
+.section.ng-hide-remove.ng-hide-remove-active{
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.section.ng-hide{
+  line-height:0%;
+}
+
+.sample-show-hide {
+  padding:10px;
+  border:1px solid black;
+  background:white;
+  -webkit-transition:all linear 5.5s;
+  transition:all linear 5.5s;
+}
+
+.sample-show-hide.ng-hide {
+  opacity:0;
+}

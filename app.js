@@ -1,4 +1,4 @@
-var mainApp = angular.module("mainApp", []);
+var mainApp = angular.module("mainApp", ['ngAnimate']);
 
 mainApp.service("serviceHints",function(constants){
     var that = this;
