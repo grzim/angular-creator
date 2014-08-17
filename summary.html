@@ -2,17 +2,30 @@
     <div class="panel-heading"><label>Summary</label></div>
     <div class="panel-body">
     <label>
-       Page name: 
+       URL name:
+    </label>
+    <input type="text" ng-model="summary.urlName" placeholder="" ng-blur="setQuestUrl(summary.urlName)">
+    <hint-button name="'nameUrl'"></hint-button>
+    <br><small>www.pureepic.eu/{{summary.urlName}}</small>
+    <div class="panel-body">
+        <hint-box name="'nameUrl'">
+            Your page will be stored under www.pureepic.eu/[URL name]<br>
+            Availability of the address will be checked after filling this filed<br>
+            You can also alias your page via www.[Page name].[domain] . ->Click here for more information.
+         </hint-box>
+    </div>
+
+    <label>
+        Page name:
     </label>
     <input type="text" ng-model="summary.name" placeholder="">
     <hint-button name="'name'"></hint-button>
-    <br><small>www.pureepic.eu/{{summary.name}}</small>
     <div class="panel-body">
         <hint-box name="'name'">
-            Your page will be stored under www.pureepic.eu/[Page name]<br>
-            You can also alias your page via www.[Page name].[domain] . ->Click here for more information.
-         </hint-box>
-    </div> 
+            Name of page that will be displayed in your site.<br>
+            You can chose the same as you have chosen in URL name field.<br>
+        </hint-box>
+    </div>
     <div class="checkbox">
     <label><input type="checkbox" ng-model="logoCheckbox">Logo</label>
     </div>

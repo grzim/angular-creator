@@ -1,22 +1,40 @@
-var mainApp = angular.module("mainApp", ['ngAnimate']);
+var mainApp = angular.module("mainApp", ['ngAnimate', 'ngRoute']);
+
+
+mainApp.config(function($routeProvider, $locationProvider) {
+    $routeProvider.
+        when('/index.html', {
+            templateUrl: "index.html",
+            controller: "mainCtrl"
+        }).
+        otherwise({
+            redirectTo: '/'
+        });
+    $locationProvider.html5Mode(true);
+});
 
 mainApp.service("serviceHints",function(constants){
     var that = this;
     this.hints = {};
     this.show = constants.rootTabName;
+    this.class = "message-disabled";
     this.toggle = function(name, element){
         if(angular.isUndefined(that.hints[name])){
             that.hints[name] = true;
+            that.class = "message-active";
         }
         else {
             that.hints[name] = !that.hints[name];
+            if(that.class=="message-disabled"){
+                that.class="message-active";
+            }
+            else{
+                that.class="message-disabled";
+            }
         }
-        element.toggleClass("message-active");
-        element.toggleClass("message-disabled");
     }
 })
 mainApp.service("sharedProperties",function(){
-    var pageData = {};
     var retriveFromLocalStorage = (function(){
         var all = [];
         for(var i = 0;i < localStorage.length; i++){
@@ -29,11 +47,18 @@ mainApp.service("sharedProperties",function(){
     return {
         pageName : "",
         allNames: retriveFromLocalStorage,
+        pageData: { value : ""},
         getPageData: function(){
-            return pageData;
+            return this.pageData;
         },
         setPageData: function(obj){
-            pageData=obj;
+            this.pageData.value=obj;
+            this.pageName = obj.summary.urlName;
+            this.allNames.push(obj.summary.urlName);
+        },
+        loadPageData: function(obj){
+            this.pageData.value=obj;
+            this.pageName = obj.summary.urlName;
         },
         getPageName: function(){
             return this.pageName;

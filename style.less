@@ -22,12 +22,7 @@
                         'rgba(215, 102, 255, 0.15)',
                         'rgba(255, 158, 78, 0.15)';
 
-.message-active{
-  color: rgb(49, 112, 143);
-}
-.message-disabled{
-  color: black;
-}
+
 // mixin with a guard to create a series of bamboo tiles
 .makeTitles(@i) when (@i > 0) {
     @title-value: @i - 1;
@@ -87,13 +82,11 @@ main-title{
     }
 }
 
+
 .first{
 }
 
 .second{
-    padding-left:10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
 
 }
 
@@ -125,29 +118,95 @@ main-title{
   height: 0%;
 }
 
+
+.hint-box{
+
+}
+
+.hint-box.ng-hide-add.ng-hide-add-active,
+.hint-box.ng-hide-remove.ng-hide-remove-active{
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+  overflow: hidden;
+}
+
+.hint-box.ng-hide{
+  opacity: 0;
+}
+
+
 .section{
-  line-height:100%;
   opacity: 1;
+  margin-top: 0%;
+  overflow: initial;
 }
 
 .section.ng-hide-add.ng-hide-add-active,
 .section.ng-hide-remove.ng-hide-remove-active{
   -webkit-transition:all linear 0.5s;
   transition:all linear 0.5s;
+  overflow: hidden;
 }
 
 .section.ng-hide{
-  line-height:0%;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: -50%;
 }
 
-.sample-show-hide {
-  padding:10px;
-  border:1px solid black;
-  background:white;
-  -webkit-transition:all linear 5.5s;
-  transition:all linear 5.5s;
+.page-top-nav{
+  padding: 10px;
+  margin:0;
+  width:100%;
+  background-color: #92dfc1;
+  position: relative;
+  top:0;
 }
 
-.sample-show-hide.ng-hide {
-  opacity:0;
+.page-top-nav.ng-hide-add.ng-hide-add-active,
+.page-top-nav.ng-hide-remove.ng-hide-remove-active{
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+  overflow: hidden;
+}
+
+.page-top-nav.ng-hide{
+  opacity: 0;
+  overflow: hidden;
+  margin-top: -50%;
+  position: relative;
+  display:none;
+}
+
+.blank-top{
+  opacity:  1;
+  margin-top:30px;
+}
+
+.page{
+
+}
+
+.hint-button{
+  font-size: 1em;
+  color: black;
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 02s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s;
+
+  &.message-active{
+      color: rgb(49, 112, 143);
+      font-size: 1.3em;
+  }
+  &.message-disabled{
+      color: black;
+  }
+}
+
+//cube
+.main-container{
+  .main-nav{
+    .page-navigation{
+      display: inline-block;
+    }
+  }
 }

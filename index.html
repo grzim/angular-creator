@@ -3,6 +3,7 @@
 <head>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular-animate.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular-route.js"></script>
 
     <script src="app.js"></script>
     <script src="controllers.js"></script>
@@ -18,18 +19,26 @@
     <title>Epic Mockup</title>
     <link rel="stylesheet" href="css/bootstrap.css"/>  
     <link href="style.css" rel="stylesheet" />
-    
 </head>
 <body ng-app="mainApp" ng-controller="MainCtrl">
-    <div ng-controller="QuestCtrl" class="quest-container section" ng-show="section.quest">
+    <div ng-controller="QuestCtrl" class="col-sm-12 quest-container section" ng-show="section.quest">
         <form role="form" class="col-sm-6" ng-click="text()">
             <div class="first">
               <!-- <tab name="main-menu" scope="mainTabs" level="tabs" number="" ng-init="init()"></tab>-->
                 <div ng-include="'summary.html'"></div>
                 <tab name="mainTabs"></tab>
                 <div ng-include="'facebook.html'"></div>
-                <button type="button" class="btn btn-primary" ng-click="generate()">Generate</button>
-            </div>
+                <label><input type="checkbox" ng-model="save" ng-change="addDownload(save)">Save</label>
+                <hint-button name="'save'"></hint-button>
+                <div class="panel-body">
+                    <hint-box name="'save'">
+                        You can save the data on your local drive thanks to which you can load it in the future.
+                    </hint-box>
+                </div>
+                <a href="/index.html" id="btn-generate-download" download="8">fdffdf
+                    <button type="button" id="btn-generate" class="btn btn-primary" ng-click="generate()">Generate</button>
+                </a>
+             </div>
         </form>
 
         <form role="form" class="col-sm-6">
@@ -38,11 +47,23 @@
                     <tab name = "tab"   index ="$index" ></tab>
                 </div>
             </div>
-        </form>     
+        </form>
+        <div class="col-sm-12">
+                <hr>
+        </div>
     </div>
-    <div ng-controller="PageCtrl" class="page-container section" ng-show="section.page">
-        <div ng-include="'page.html'"></div>
+    <div ng-controller="PageCtrl" class="page-container" ng-show="section.page">
+        <div class="second">
+            <div class="page-top-nav" ng-show="section.page">
+                <div ng-include="'pageTopNav.html'"></div>
+            </div>
+        </div>
+        <div class="page" ng-show="section.page">
+                <div ng-include="'cubeTemplate.html'"> </div>
+        </div>
     </div>
+
+
 </body>
 </html>
     

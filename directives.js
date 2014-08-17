@@ -29,7 +29,7 @@ mainApp.directive('hintBox', function(serviceHints){
             $scope.status = serviceHints.hints
         },
         transclude: true,
-        template: '<div ng-show="status[name]" class="hint alert alert-info" ng-transclude role="alert"></div>'
+        template: '<div ng-show="status[name]" class="hint alert alert-info hint-box" ng-transclude role="alert"></div>'
     }
 });
 
@@ -40,15 +40,16 @@ mainApp.directive('hintButton',function(serviceHints){
             name: "="
         },
         link: function(scope, element, attr){
+            scope.class = serviceHints.class;
        //     element.addClass("message-disabled");
             element.css({'cursor':'pointer'});
-            element.on("click",function(){
-                serviceHints.toggle(scope.name, element);
-                console.log(serviceHints.hints[scope.name]);
+            element.on('mouseover',function(){ //scope digest aby miec hovera
+                scope.$apply(serviceHints.toggle(scope.name, element));
+                scope.$apply(function(){scope.class = serviceHints.class});
             })
         },
         replace: true,
-        template: '<span class="glyphicon glyphicon-info-sign message-disabled"></span>'
+        template: '<span class="glyphicon glyphicon-info-sign message-disabled hint-button" ng-class="class"></span>'
 
     }
 });

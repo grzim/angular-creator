@@ -1,11 +1,17 @@
 /**
  * Created by Grzegorz on 2014-08-10.
  */
-mainApp.controller("MainCtrl",function($scope){
+mainApp.controller("MainCtrl",function($scope, $location){
+    $scope.listeners = {
+        historyBack : []
+        },
     $scope.section = {
+        questUrl: "",
+        pageUrl: "",
         quest : true,
         page : false,
         toggle : function() {
+
             this.quest = !this.quest;
             this.page = !this.page;
         }
@@ -13,29 +19,59 @@ mainApp.controller("MainCtrl",function($scope){
 })
 
 mainApp.controller("PageCtrl",function($scope, constants, sharedProperties){
-    $scope.pageData = sharedProperties;
-
-    console.log($scope.startName);
-    $scope.load = function(name){
-        console.log(name);
-        var obj = localStorage.getItem(name);
-        $scope.text = obj;
-        obj = angular.fromJson(sharedProperties.getPageData());
-        $scope.obj = obj;
-        console.log(obj.tabs);
-    }
-    $scope.clearAll = function(){
-        $scope.names = [];
+    $scope.navigation = {
+        back : function(){
+            window.history.back();
+        }
+    };
+    $scope.properties = sharedProperties;
+    $scope.pageData = sharedProperties.pageData;
+    $scope.name = "";
+    $scope.$watch(sharedProperties.pageData.value,function(newValue,oldValue){
+        if(angular.isDefined(newValue))
+            $scope.name = newValue.summary.urlName;
+    });
+    $scope.hexToBase64 = function(str) {
+        return btoa(String.fromCharCode.apply(null, str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")));
+    };
+    $scope.storage = {
+        load : function(name){
+            console.log(name);
+            var obj = localStorage.getItem(name);
+            obj = angular.fromJson(obj);
+            sharedProperties.loadPageData(obj);
+            console.log(obj);
+        },
+        allNames : sharedProperties.allNames,
+        clearAll : function(){
+            $scope.properties.allNames = [];
+            this.allNames = $scope.properties.allNames;
         localStorage.clear();
     }
+    }
+    mariusz = sharedProperties;
+    renata = $scope.pageData;
     kapusniak = $scope;
 });
 
-mainApp.controller("QuestCtrl",function($scope, constants, sharedProperties){
+mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants, sharedProperties){
      $scope.hints = {
         mainMenu : false,
         subtabs: false,
         additionalContent: false
+    }
+    $scope.setQuestUrl = function(url){
+        var loc = $location.path();
+        $location.path(url+'/create');
+        $scope.section.questUrl = $location.path();
+        $scope.listeners.historyBack.push ( $rootScope.$on('$locationChangeSuccess', function(object, newLocation, previousLocation) {
+            if($location.path() === loc)
+                $scope.summary.urlName = "";
+            if($location.path() === $scope.section.questUrl) {
+                var temp = $location.path().split("/");
+                $scope.summary.urlName = temp[temp.length-2];
+            }
+        }) );
     }
     $scope.mainTabs = {
         maxNumberOfTabs: constants.mainTabsNumber,
@@ -50,6 +86,8 @@ mainApp.controller("QuestCtrl",function($scope, constants, sharedProperties){
         }
     }
     $scope.summary ={
+        name: "",
+        urlName: "",
         logo: "",
         motto: "",
         colors: new Array(3)
@@ -70,22 +108,58 @@ mainApp.controller("QuestCtrl",function($scope, constants, sharedProperties){
     $scope.getActiveMainTab = function(){
         return $scope.mainTabs.activeMainTab;
     }
-    $scope.generate = function(){
-        var pageData = {
-            tabs : $scope.mainTabs,
-            summary : $scope.summary,
-            fanpage : $scope.fanpage
+    $scope.addDownload = function(save){
+        if(save==true){
+            console.error($scope);
+            var json = angular.toJson($scope.mainTabs);
+            console.error(json);
+            var blob = new Blob([json], {type: "application/json"});
+            var url  = URL.createObjectURL(blob);
+            console.info(document.getElementById("btn-generate-download"));
+            document.getElementById("btn-generate-download").href = url;
+            //dodać watchera jakby ktos pozniej cos pozmienial w modelu too zeby sie updatowalo
+            document.getElementById("btn-generate-download").download = $scope.summary.name;
         }
-        pageData = angular.toJson(pageData, true);
+        else{
+            $scope.downloadUrl = "";//detach
+        }
+    }
+    $scope.generate = function() {
+        var pageData = {
+            tabs: $scope.mainTabs,
+            summary: $scope.summary,
+            fanpage: $scope.fanpage
+        }
+        console.log(pageData.tabs);
         sharedProperties.setPageData(pageData);
-        sharedProperties.setPageName($scope.summary.name);
-        localStorage.setItem($scope.summary.name, pageData);
-        $scope.section.toggle();
+        localStorage.setItem($scope.summary.urlName, angular.toJson(pageData, true));
+        $scope.section.questUrl = $location.path();
+        $location.path('/' +"preview");
+        $scope.section.quest = 0;
+        $scope.section.page = 1;
+
+        $scope.listeners.historyBack.push ( $rootScope.$on('$locationChangeSuccess', function(object, newLocation, previousLocation) {
+            if($location.path() === $scope.section.questUrl)
+                $scope.section.toggle();
+        }) );
+        console.log(pageData);
+
+        var json = angular.toJson(pageData, true);
+        console.info(json);
+        var blob = new Blob([json], {type: "application/json"});
+        var url  = URL.createObjectURL(blob);
+        document.getElementById("btn-generate").href = url;
+        console.log($scope.summary.name);
+        document.getElementById("btn-generate").download = $scope.summary.name;
+        console.info(document.getElementById("btn-generate").download );
 
         //document.cookie = 'name ='+ $scope.summary.name+', value = '+obj+'; expires=Thu, 2 Aug 2022 20:20:20 UTC; path=/';
-        // window.location = "/page.html"
+        // window.location = "/pageTopNav.html"
 
     }
+
+
+
     $scope.toggleHint = function(elem){
         $scope.hints[elem] =  !$scope.hints[elem];
     },

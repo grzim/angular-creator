@@ -36,95 +36,98 @@
             
         </style>
     </head>
-    <body>
-        <div class="container main-container centered">
-            <nav class="navbar navbar-default navbar-fixed-top main-nav " role="navigation">
-                <div class="container">
-                    <div class="collapse navbar-collapse pull-right ">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="#a">tab.name</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <div class="container tab-container well">
-                <div class="nav-stacked-container col-sm-4 col-md-2">
-                    <ul class="nav nav-pills nav-stacked tab-details-nav">
-                      <li class="active"><a href="#">Home</a></li>
-                      <li><a href="#">Profile</a></li>
-                      <li><a href="#">Messages</a></li>
+<body>
+    <div class="container main-container centered">
+        <nav class="navbar navbar-default navbar-fixed-top main-nav " role="navigation">
+            <div class="container">
+                <div class="collapse navbar-collapse ">
+                    <div class="logo">{{pageData.value.summary.logo}}</div>
+                    <ul class="nav navbar-nav  pull-right">
+                        <li class="page-navigation">
+                            <div ng-repeat="tab in pageData.value.tabs.tab">
+                                <a ng-href="#{{tab.name}}">tab.name</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
-                <div clas="tab-content com-sm-8">
-                    <div class="tab" id="#a">
-                        <div class="tab-details row">
-                            tab.content
-                            <div class="tab-picture col-sm-2 pull-right">
-                                <div class="row">picture.image</div>
-                                <div class="row">picture.title</div>
-                                <div class="row">picture.desc</div>
-                            </div>
-                        </div>                     
+            </div>
+        </nav>
+        <div class="container tab-container well">
+            <div class="nav-stacked-container col-sm-4 col-md-2">
+                <ul class="nav nav-pills nav-stacked tab-details-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">Messages</a></li>
+                </ul>
+            </div>
+            <div clas="tab-content com-sm-8">
+                <div class="tab" id="#a">
+                    <div class="tab-details row">
+                        tab.content
+                        <div class="tab-picture col-sm-2 pull-right">
+                            <div class="row">picture.image</div>
+                            <div class="row">picture.title</div>
+                            <div class="row">picture.desc</div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="container tab-container well">
-                <div class="tab-gallery-container">
-                <div class="tab-gallery">
-                            <div class="nav-stacked-container col-sm-4 col-xs-12">
-                                <ul class="nav nav-pills tab-gallery-nav">
-                                    <li class="active"><a href="#">Home</a></li>
-                                    <li><a href="#">Profile</a></li>
-                                    <li><a href="#">Messages</a></li>
-                                </ul>
+        </div>
+        <div class="container tab-container well">
+            <div class="tab-gallery-container">
+            <div class="tab-gallery">
+                        <div class="nav-stacked-container col-sm-4 col-xs-12">
+                            <ul class="nav nav-pills tab-gallery-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Messages</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                   <div class="gallery-container col-xs-12">
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 1"><img src="http://placehold.it/600x350" class="thumbnail img-responsive"></a></div>
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 2"><img src="http://placehold.it/600x350/2255EE" class="thumbnail img-responsive"></a></div>
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 3"><img src="http://placehold.it/600x350/449955/FFF" class="thumbnail img-responsive"></a></div>
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 4"><img src="http://placehold.it/600x350/992233" class="thumbnail img-responsive"></a></div>
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 5"><img src="http://placehold.it/600x350/2255EE" class="thumbnail img-responsive"></a></div>
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 6"><img src="http://placehold.it/600x350/449955/FFF" class="thumbnail img-responsive"></a></div>
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 8"><img src="http://placehold.it/600x350/777" class="thumbnail img-responsive"></a></div>
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 9"><img src="http://placehold.it/600x350/992233" class="thumbnail img-responsive"></a></div>
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 10"><img src="http://placehold.it/600x350/EEE" class="thumbnail img-responsive"></a></div>
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 11"><img src="http://placehold.it/600x350/449955/FFF" class="thumbnail img-responsive"></a></div>
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 12"><img src="http://placehold.it/600x350/DDD" class="thumbnail img-responsive"></a></div>
+                            <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 13"><img src="http://placehold.it/600x350/992233" class="thumbnail img-responsive"></a></div>
+                            </div>
+                            <div tabindex="-1" class="modal fade" id="myModal" role="dialog">
+                              <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" type="button" data-dismiss="modal">×</button>
+                                    <h3 class="modal-title">Heading</h3>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                               </div>
+                              </div>
                             </div>
 
-                        </div>
-                    </div>   
-                       <div class="gallery-container col-xs-12">
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 1"><img src="http://placehold.it/600x350" class="thumbnail img-responsive"></a></div>
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 2"><img src="http://placehold.it/600x350/2255EE" class="thumbnail img-responsive"></a></div>
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 3"><img src="http://placehold.it/600x350/449955/FFF" class="thumbnail img-responsive"></a></div>
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 4"><img src="http://placehold.it/600x350/992233" class="thumbnail img-responsive"></a></div>
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 5"><img src="http://placehold.it/600x350/2255EE" class="thumbnail img-responsive"></a></div>
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 6"><img src="http://placehold.it/600x350/449955/FFF" class="thumbnail img-responsive"></a></div>
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 8"><img src="http://placehold.it/600x350/777" class="thumbnail img-responsive"></a></div>
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 9"><img src="http://placehold.it/600x350/992233" class="thumbnail img-responsive"></a></div>
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 10"><img src="http://placehold.it/600x350/EEE" class="thumbnail img-responsive"></a></div>
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 11"><img src="http://placehold.it/600x350/449955/FFF" class="thumbnail img-responsive"></a></div>
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 12"><img src="http://placehold.it/600x350/DDD" class="thumbnail img-responsive"></a></div>
-                                <div class="col-lg-3 col-sm-4 col-6"><a href="#" title="Image 13"><img src="http://placehold.it/600x350/992233" class="thumbnail img-responsive"></a></div>
-                                </div>
-                                <div tabindex="-1" class="modal fade" id="myModal" role="dialog">
-                                  <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button class="close" type="button" data-dismiss="modal">×</button>
-                                        <h3 class="modal-title">Heading</h3>
-                                    </div>
-                                    <div class="modal-body">
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                   </div>
-                                  </div>
-                                </div>
-
-            </div>
         </div>
-        
-        <script>
-                $('.thumbnail').click(function(){
-                    $('.modal-body').empty();
-                    var title = $(this).parent('a').attr("title");
-                    $('.modal-title').html(title);
-                    $($(this).parents('div').html()).appendTo('.modal-body');
-                    $('#myModal').modal({show:true});
-            });
-        </script>
-    </body>
+    </div>
+
+    <script>
+            $('.thumbnail').click(function(){
+                $('.modal-body').empty();
+                var title = $(this).parent('a').attr("title");
+                $('.modal-title').html(title);
+                $($(this).parents('div').html()).appendTo('.modal-body');
+                $('#myModal').modal({show:true});
+        });
+    </script>
+</body>
   </html>
