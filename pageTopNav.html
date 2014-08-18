@@ -1,0 +1,8 @@
+
+<button type="button" class="btn btn-primary" ng-click="navigation.back()">Go back</button>
+        Data in your local storage:
+<select ng-model="properties.pageName"  type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-options="name for name in storage.allNames" ng-change="storage.load(properties.pageName)"></select>
+<button type="button" class="btn btn-primary"  ng-click="storage.clearAll()">Clear all</button>
+<div ><textarea ng-model="pageData.value" class="form-control col-xs-6"></textarea></div>
+        image:
+<img ng-src="{{pageData.value.tabs.tab[0].pictures.list[0].file}}">{{pageData.value.tabs.tab[0].pictures.list[0].file}}

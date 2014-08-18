@@ -30,7 +30,7 @@
         <div class="form-group tabs" ng-class="{'main-tabs': pointer.level=='tabs' , 'sub-tabs': pointer.level=='subtabs'}">
             <div class="panel-group" id="accordion">
 <!--generation of tab body-->
-             <div class="panel panel-default"  ng-repeat="i in [] | range:pointer.scope.numberOfTabs" id="panel{{pointer.tabNumber}}{{i}}" ng-click="selectActiveMainTab(pointer.level, i)">
+             <div class="panel panel-default"  ng-repeat="i in [] | range:pointer.scope.numberOfTabs" id="panel{{pointer.tabNumber}}{{i}}" ng-click="pointer.scope.selectActiveMainTab(pointer.level, i)">
 <!--selecting a class of tab accordingly to its parent tab-->
                  <div  class="panel-heading"  ng-class="{'main-subtabs-{{i}}': subtabsCheckbox }">
                     <h4 class="panel-title">
@@ -49,8 +49,8 @@
                             Subtabs
                         </label>
                         <hint-button name="'subTabs'" ng-if="pointer.level=='tabs' && $index==0"></hint-button>
-                        <input ng-if="pointer.level=='tabs' && $index==0"  ng-show="subtabsCheckbox" type="number" min="0" max="{{constants.subTabsNumber}}" ng-model="pointer.scope.tab[i].numberOfTabs" ng-change="pointer.scope.tab[i].update(pointer.scope.tab[i].numberOfTabs)">
-                        <hint-box name="'subTabs'"  ng-if="pointer.level=='tabs'">
+                        <input ng-if="pointer.level=='tabs'"  ng-show="subtabsCheckbox" type="number" min="0" max="{{constants.subTabsNumber}}" ng-model="pointer.scope.tab[i].numberOfTabs" ng-change="pointer.scope.tab[i].update(pointer.scope.tab[i].numberOfTabs)">
+                        <hint-box name="'subTabs'"  ng-if="pointer.level=='tabs' && $index==0 ">
                             Select if you wish to have a submenu in this tab
                         </hint-box>
                         <div ng-if="pointer.level=='tabs'">
@@ -64,9 +64,9 @@
                             <label><input type="checkbox" ng-model="videoCheckbox">Video</label>
                             <label><input type="checkbox" ng-model="galleryCheckbox">Gallery</label>
                             <label><input type="checkbox" ng-model="contactCheckbox">Contact Form</label>
-                            <hint-button name="contact"></hint-button>
+                            <hint-button ng-if="pointer.level=='tabs' && $index==0" name="contact"></hint-button>
                         </div>
-                        <hint-box name="contact">Select what kind of additional content you wish to have</hint-box>
+                        <hint-box ng-if="pointer.level=='tabs' && $index==0" name="contact">Select what kind of additional content you wish to have</hint-box>
                         <ul class="nav nav-tabs" role="tablist">
                             <li ng-show="photoCheckbox" class="active"><a data-toggle="tab" href="#photo{{pointer.level}}{{pointer.tabNumber}}{{i}}">Photo</a></li>
                             <li ng-show="videoCheckbox"><a data-toggle="tab" href="#video{{pointer.level}}{{pointer.tabNumber}}{{i}}">Video</a></li>
