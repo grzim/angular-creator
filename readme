@@ -1,2 +1,14 @@
-console for gahering data.
-under production
+The aim of the project is to create UI for gathering data that will be then rendered to diffrient layout templates.
+Project consist of 3 parts:
+1) Create an interface and MVC architecture to gather and store data
+2) Create an interface for saving the data localy
+3) Create templates that will work with the data
+
+Current state:
+  Adding functionality of saving to and loading from a local drive.
+  
+Working demo:
+  www.pureepic.eu/angular/creator
+  
+Created by:
+  Grzegorz Marzencki
