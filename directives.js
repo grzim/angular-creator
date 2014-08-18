@@ -72,3 +72,11 @@ mainApp.directive("fileread", [function () {
     }
 
 }]);
+/*
+mainApp.directive("tabToSubtabPointer",function(){
+    return{
+        controller : function(scope,element, attr){
+
+        }
+    }
+})*/

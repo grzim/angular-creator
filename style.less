@@ -188,6 +188,8 @@ main-title{
 }
 
 .hint-button{
+  background-color: rgba(255,255,255,1);
+  border-radius: 22px;
   font-size: 1em;
   color: black;
   -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 02s;
@@ -196,9 +198,25 @@ main-title{
   &.message-active{
       color: rgb(49, 112, 143);
       font-size: 1.3em;
+      border-radius: 33px;
   }
   &.message-disabled{
       color: black;
+      border-radius: 22px;
+  }
+}
+
+.btn-save-anchor{
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
+}
+.btn-save, .btn-load{
+  .hint-button{
+    &.message-active {
+      color: red;
+    }
   }
 }
 
@@ -209,4 +227,46 @@ main-title{
       display: inline-block;
     }
   }
+}
+
+.quest-container{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgba(63, 240, 12, 0.60);
+  .first{
+    background-color: rgb(255, 253, 205);
+    border-radius: 10px;
+  }
+  .second{
+    background-color:white;
+    border-radius: 10px;
+  }
+
+  .quest{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:10px;
+    padding-right: 10px;
+    border-radius: 10px;
+
+  }
+  .second{
+  //  border-bottom-right-radius: 5px;
+   // border-top-right-radius: 5px;
+
+    .quest{
+
+    }
+  }
+}
+
+.panel-hint{
+  padding: 10px;
+  margin-bottom: 0px;
+}
+.fanpage-hint{
+  margin-bottom:10px;
+}
+.save-load-container{
+  margin-top:10px;
 }

@@ -103,7 +103,9 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
         return array;
     }
     $scope.selectActiveMainTab = function(level,tab){
-        if(level==="tabs") $scope.activeMainTab=tab;
+        $scope.$apply(function() {
+            if (level === "tabs") $scope.activeMainTab = tab;
+        })
     }
     $scope.getActiveMainTab = function(){
         return $scope.mainTabs.activeMainTab;

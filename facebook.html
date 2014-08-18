@@ -1,21 +1,17 @@
 <div class="panel panel-default">
     <div class="panel-heading">  
-        <label><input type="checkbox" ng-model="facebookCheckbox"> Facebook fanpage <span class="glyphicon glyphicon-info-sign" ng-mouseover="showHint('facebook')" ng-mouseleave="hideHint('facebook')"></span></label>
+        <label>Facebook fanpage <hint-button name="fanpage"></hint-button></label>
     </div>
-     <div class="panel-body" role="alert" ng-show="hints.facebook">
-         <div class="hint alert alert-info" role="alert">
-            Select when you have a facebook fanpage which is reffering to your site
-         </div>
-    </div> 
 
-    <div class="panel-body" ng-show="facebookCheckbox">
-        <input type="url" class="form-control" placeholder="fanpage url" ng-model="fanpage.url">
-        <label>Show fanpage followers:</label>
-        <div  class="radio" ng-model="fanpage.followers">
-            <label><input  type="radio" name="optionsRadios" id="optionsRadios1" checked>None</label>
-            <label><input type="radio" name="optionsRadios" id="optionsRadios2">Like-box</label>
-            <label><input  type="radio" name="optionsRadios" id="optionsRadios3">Facepile</label>
-        </div>
-        <label><input type="checkbox" ng-model="fanpage.likeButton"> Like button</label>
+    <div class="panel-body" >
+        <hint-box name="fanpage" class="fanpage-hint"> Fill this if you have a facebook fanpage which is referring to your site</hint-box>
+            <input type="url" class="form-control" placeholder="fanpage url" ng-model="fanpage.url">
+            <label>Show fanpage followers:</label>
+            <div  class="radio" ng-model="fanpage.followers">
+                <label><input  type="radio" name="optionsRadios" id="optionsRadios1" checked>None</label>
+                <label><input type="radio" name="optionsRadios" id="optionsRadios2">Like-box</label>
+                <label><input  type="radio" name="optionsRadios" id="optionsRadios3">Facepile</label>
+            </div>
+            <label><input type="checkbox" ng-model="fanpage.likeButton"> Like button</label>
     </div>
 </div>

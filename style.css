@@ -189,6 +189,8 @@ main-title .big {
   margin-top: 30px;
 }
 .hint-button {
+  background-color: #ffffff;
+  border-radius: 22px;
   font-size: 1em;
   color: black;
   -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 2s;
@@ -197,7 +199,52 @@ main-title .big {
 .hint-button.message-active {
   color: #31708f;
   font-size: 1.3em;
+  border-radius: 33px;
 }
 .hint-button.message-disabled {
   color: black;
+  border-radius: 22px;
+}
+.btn-save-anchor {
+  text-decoration: none;
+}
+.btn-save-anchor:hover {
+  text-decoration: none;
+}
+.btn-save .hint-button.message-active,
+.btn-load .hint-button.message-active {
+  color: red;
+}
+.main-container .main-nav .page-navigation {
+  display: inline-block;
+}
+.quest-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgba(63, 240, 12, 0.6);
+}
+.quest-container .first {
+  background-color: #fffdcd;
+  border-radius: 10px;
+}
+.quest-container .second {
+  background-color: white;
+  border-radius: 10px;
+}
+.quest-container .quest {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+}
+.panel-hint {
+  padding: 10px;
+  margin-bottom: 0px;
+}
+.fanpage-hint {
+  margin-bottom: 10px;
+}
+.save-load-container {
+  margin-top: 10px;
 }

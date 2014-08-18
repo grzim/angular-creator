@@ -1,14 +1,19 @@
-
+        <tab-to-subtab-pointer></tab-to-subtab-pointer>
         <div class="form-group">
             <label for="tabsNumber" ng-show="pointer.scope.numberOfTabs">
 
-                <hint-button ng-if="pointer.name=='main menu'" name="'mainMenu'"></hint-button>
+                <hint-button ng-if="pointer.level=='tabs'" name="'mainMenu'"></hint-button>
                 
                 <main-title>Select number of <div class="big">{{pointer.scope.name}}</div> {{pointer.level}}: </main-title>
              </label>
 
-
-            <hint-box ng-if="pointer.level=='tabs'" name="'mainMenu'">Select number of items in main navigation bar (menu)</hint-box>
+                <hint-box ng-if="pointer.level=='tabs'" name="'mainMenu'">
+                    <div class="panel panel-default panel-hint">
+                        <div class="panel-body">
+                             Select number of items in main navigation bar (menu)
+                        </div>
+                    </div>
+                </hint-box>
 
 
 
@@ -43,8 +48,8 @@
                             <input  type="checkbox" ng-model="subtabsCheckbox">
                             Subtabs
                         </label>
-                        <hint-button name="'subTabs'"></hint-button>
-                        <input ng-if="pointer.level=='tabs'"  ng-show="subtabsCheckbox" type="number" min="0" max="{{constants.subTabsNumber}}" ng-model="pointer.scope.tab[i].numberOfTabs" ng-change="pointer.scope.tab[i].update(pointer.scope.tab[i].numberOfTabs)">
+                        <hint-button name="'subTabs'" ng-if="pointer.level=='tabs' && $index==0"></hint-button>
+                        <input ng-if="pointer.level=='tabs' && $index==0"  ng-show="subtabsCheckbox" type="number" min="0" max="{{constants.subTabsNumber}}" ng-model="pointer.scope.tab[i].numberOfTabs" ng-change="pointer.scope.tab[i].update(pointer.scope.tab[i].numberOfTabs)">
                         <hint-box name="'subTabs'"  ng-if="pointer.level=='tabs'">
                             Select if you wish to have a submenu in this tab
                         </hint-box>
@@ -59,9 +64,9 @@
                             <label><input type="checkbox" ng-model="videoCheckbox">Video</label>
                             <label><input type="checkbox" ng-model="galleryCheckbox">Gallery</label>
                             <label><input type="checkbox" ng-model="contactCheckbox">Contact Form</label>
-                            <span ng-show="i==0"  class="glyphicon glyphicon-info-sign" ng-mouseover="showHint('additionalContent')" ng-mouseleave="hideHint('additionalContent')"></span>
+                            <hint-button name="contact"></hint-button>
                         </div>
-                        <div class="hint alert alert-info" role="alert" ng-show="hints.additionalContent">Select what kind of additional content you wish to have</div> 
+                        <hint-box name="contact">Select what kind of additional content you wish to have</hint-box>
                         <ul class="nav nav-tabs" role="tablist">
                             <li ng-show="photoCheckbox" class="active"><a data-toggle="tab" href="#photo{{pointer.level}}{{pointer.tabNumber}}{{i}}">Photo</a></li>
                             <li ng-show="videoCheckbox"><a data-toggle="tab" href="#video{{pointer.level}}{{pointer.tabNumber}}{{i}}">Video</a></li>
