@@ -5,7 +5,7 @@ Project consist of 3 parts:
 3) Create templates that will work with the data
 
 Done:
-  (1) Interface for the creation of JSON storing data for template.
+  (1) Interface for creating JSON which stores data for template.
   (2) Saving using local store HTML5 API.
 
 Current state (2):
