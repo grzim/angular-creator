@@ -4,8 +4,11 @@ Project consist of 3 parts:
 2) Create an interface for saving the data localy
 3) Create templates that will work with the data
 
-Current state:
+Current state (2):
   Adding functionality of saving to and loading from a local drive.
+  
+Next step to do:
+  Choose better colors, fix transitions bug on hint buttons
   
 Working demo:
   http://www.pureepic.eu/angular/creator
