@@ -4,6 +4,10 @@ Project consist of 3 parts:
 2) Create an interface for saving the data localy
 3) Create templates that will work with the data
 
+Done:
+  (1) Interface for the creation of JSON storing data for template.
+  (2) Saving using local store HTML5 API.
+
 Current state (2):
   Adding functionality of saving to and loading from a local drive.
   
