@@ -33,13 +33,16 @@
 -->
 
 
-
-                <button type="button" class="btn btn-success btn-save" ng-click="">Load <hint-button name="'load'"></hint-button></button>
-                <a href="/index.html" class="btn-save-anchor" download="8">
-                    <button type="button" class="btn btn-success btn-save" ng-click="">Save <hint-button name="'save'"></hint-button></button>
-                </a>
-                <button type="button" id="btn-generate" class="btn btn-primary" ng-click="generate()">Generate</button>
-
+                <div class="buttons">
+                    <button ng-show="!load" ng-init="load=false" type="button" class="btn btn-success btn-save" ng-click="load=true" >Load <hint-button name="'load'"></hint-button></button>
+                    <div ng-show="load" class="file-input-container btn btn-success ">
+                        <input type="file" class="file-input" fileread="data">
+                    </div>
+                    <button type="button" id="btn-generate" class="btn btn-primary pull-right" ng-click="generate()">Generate</button>
+                    <a ng-href="{{file.value}}" ng-mouseenter="file.compute()" class="btn-save-anchor" download="{{summary.name}}">
+                        <button type="button" class="btn btn-success btn-save pull-right" ng-click="">Save <hint-button name="'save'"></hint-button></button>
+                    </a>
+                </div>
 
                 <div class="save-load-container">
                     <hint-box name="'save'">

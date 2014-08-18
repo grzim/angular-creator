@@ -3,7 +3,7 @@
  */
 mainApp.controller("MainCtrl",function($scope, $location){
     $scope.listeners = {
-        historyBack : []
+        history : []
         },
     $scope.section = {
         questUrl: "",
@@ -14,6 +14,14 @@ mainApp.controller("MainCtrl",function($scope, $location){
 
             this.quest = !this.quest;
             this.page = !this.page;
+        },
+        goToQuest: function(){
+            this.quest=true;
+            this.page=false;
+        },
+        goToPage: function(){
+            this.quest=false;
+            this.page=true;
         }
     }
 })
@@ -64,7 +72,7 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
         var loc = $location.path();
         $location.path(url+'/create');
         $scope.section.questUrl = $location.path();
-        $scope.listeners.historyBack.push ( $rootScope.$on('$locationChangeSuccess', function(object, newLocation, previousLocation) {
+        $scope.listeners.history.push ( $rootScope.$on('$locationChangeSuccess', function(object, newLocation, previousLocation) {
             if($location.path() === loc)
                 $scope.summary.urlName = "";
             if($location.path() === $scope.section.questUrl) {
@@ -137,12 +145,14 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
         localStorage.setItem($scope.summary.urlName, angular.toJson(pageData, true));
         $scope.section.questUrl = $location.path();
         $location.path('/' +"preview");
-        $scope.section.quest = 0;
-        $scope.section.page = 1;
+        $scope.section.pageUrl = $location.path();
+        $scope.section.goToPage();
 
-        $scope.listeners.historyBack.push ( $rootScope.$on('$locationChangeSuccess', function(object, newLocation, previousLocation) {
+        $scope.listeners.history.push ( $rootScope.$on('$locationChangeSuccess', function(object, newLocation, previousLocation) {
             if($location.path() === $scope.section.questUrl)
-                $scope.section.toggle();
+                $scope.section.goToQuest();
+            if($location.path() === $scope.section.pageUrl)
+                $scope.section.goToPage();
         }) );
         console.log(pageData);
 
@@ -160,7 +170,21 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
 
     }
 
-
+    $scope.file = {
+        value: {},
+        compute : function(){
+                var pageData = {
+                    tabs: $scope.mainTabs,
+                    summary: $scope.summary,
+                    fanpage: $scope.fanpage
+                }
+                var json = angular.toJson(pageData, true);
+                console.info(json);
+                var blob = new Blob([json], {type: "application/json"});
+                var url = URL.createObjectURL(blob);
+                this.value = url;
+        }
+    }
 
     $scope.toggleHint = function(elem){
         $scope.hints[elem] =  !$scope.hints[elem];

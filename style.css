@@ -115,6 +115,7 @@ main-title {
 main-title .big {
   display: inline-block;
   font-size: 1.2em;
+  color: #b70005;
 }
 .main-container {
   padding: 10px;
@@ -211,9 +212,13 @@ main-title .big {
 .btn-save-anchor:hover {
   text-decoration: none;
 }
+.btn-save,
+.btn-load {
+  margin-right: 10px;
+}
 .btn-save .hint-button.message-active,
 .btn-load .hint-button.message-active {
-  color: red;
+  color: #b70005;
 }
 .main-container .main-nav .page-navigation {
   display: inline-block;
@@ -242,9 +247,15 @@ main-title .big {
   padding: 10px;
   margin-bottom: 0px;
 }
-.fanpage-hint {
-  margin-bottom: 10px;
+.fanpage-hint .hint.alert.alert-info.hint-box {
+  margin-bottom: 20px;
 }
 .save-load-container {
   margin-top: 10px;
+}
+.file-input-container {
+  float: left;
+}
+.buttons {
+  min-height: 50px;
 }
