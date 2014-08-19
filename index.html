@@ -39,7 +39,7 @@
                         <input type="file" class="file-input" fileread="data">
                     </div>
                     <button type="button" id="btn-generate" class="btn btn-primary pull-right" ng-click="generate()">Generate</button>
-                    <a ng-href="{{file.value}}" ng-mouseenter="file.compute()" class="btn-save-anchor" download="{{summary.name}}">
+                    <a ng-mouseenter="file.compute($event)" id="btn-save-anchor">
                         <button type="button" class="btn btn-success btn-save pull-right" ng-click="">Save <hint-button name="'save'"></hint-button></button>
                     </a>
                 </div>

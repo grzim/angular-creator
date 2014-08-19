@@ -10,6 +10,17 @@ mainApp.controller("MainCtrl",function($scope, $location){
         pageUrl: "",
         quest : true,
         page : false,
+        setQuestUrl : function(url){
+            $location.path(url+'/create');
+            this.questUrl = $location.path();
+        },
+        getPageNameFormQuestUrl: function(url){
+            if(angular.isUndefined(url)){
+                url = $location.path();
+            }
+            var arr = url.split("/");
+            return arr[arr.length-2];
+        },
         toggle : function() {
 
             this.quest = !this.quest;
@@ -70,14 +81,12 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
     }
     $scope.setQuestUrl = function(url){
         var loc = $location.path();
-        $location.path(url+'/create');
-        $scope.section.questUrl = $location.path();
+        $scope.section.setQuestUrl(url);
         $scope.listeners.history.push ( $rootScope.$on('$locationChangeSuccess', function(object, newLocation, previousLocation) {
             if($location.path() === loc)
                 $scope.summary.urlName = "";
             if($location.path() === $scope.section.questUrl) {
-                var temp = $location.path().split("/");
-                $scope.summary.urlName = temp[temp.length-2];
+                $scope.summary.urlName = $scope.section.getPageNameFormQuestUrl();
             }
         }) );
     }
@@ -114,13 +123,6 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
         var array = new Array(num);
         return array;
     }
-    $scope.selectActiveMainTab = function(level,tab){
-        alert('a');
-        console.log($scope.mainTabs.activeMainTab);
-        $scope.$apply(function() {
-            if (level === "tabs") $scope.mainTabs.activeMainTab = tab;
-        })
-    }
     $scope.getActiveMainTab = function(){
         return $scope.mainTabs.activeMainTab;
     }
@@ -147,7 +149,7 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
 
         localStorage.setItem($scope.summary.urlName, angular.toJson(localStoreData, true));
         $scope.section.questUrl = $location.path();
-        $location.path('/' +"preview");
+        $location.path('/' +$scope.summary.urlName+'/preview');
         $scope.section.pageUrl = $location.path();
         $scope.section.goToPage();
 
@@ -163,7 +165,10 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
 
     $scope.file = {
         value: {},
-        compute : function(){
+        compute : function(event){
+            //how to target event originator?
+            var element =  document.getElementById('btn-save-anchor');
+            console.error( element);
                 var pageData = {
                     tabs: $scope.mainTabs,
                     summary: $scope.summary,
@@ -173,19 +178,9 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
                 console.info(json);
                 var blob = new Blob([json], {type: "application/json"});
                 var url = URL.createObjectURL(blob);
-                this.value = url;
+                element.download    = $scope.summary.name;
+                element.href        = url;
         }
-    }
-
-    $scope.toggleHint = function(elem){
-        $scope.hints[elem] =  !$scope.hints[elem];
-    },
-    $scope.showHint = function(elem){
-        $scope.hints[elem] =  true;
-    }
-
-    $scope.hideHint = function(elem){
-        $scope.hints[elem] =  false;
     }
 
     function Tab(){

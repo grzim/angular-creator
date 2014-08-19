@@ -17,19 +17,18 @@ mainApp.service("serviceHints",function(constants){
     var that = this;
     this.hints = {};
     this.show = constants.rootTabName;
-    this.class = "message-disabled";
     this.toggle = function(name, element){
         if(angular.isUndefined(that.hints[name])){
             that.hints[name] = true;
-            that.class = "message-active";
+            element.addClass("message-active").removeClass("message-disabled");
         }
         else {
             that.hints[name] = !that.hints[name];
-            if(that.class=="message-disabled"){
-                that.class="message-active";
+            if(element.hasClass("message-disabled")){
+                element.addClass("message-active").removeClass("message-disabled");
             }
             else{
-                that.class="message-disabled";
+                element.removeClass("message-active").addClass("message-disabled");
             }
         }
     }

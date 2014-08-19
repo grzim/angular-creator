@@ -40,12 +40,9 @@ mainApp.directive('hintButton',function(serviceHints){
             name: "="
         },
         link: function(scope, element, attr){
-            scope.class = serviceHints.class;
-       //     element.addClass("message-disabled");
             element.css({'cursor':'pointer'});
-            element.on('mouseover',function(){ //scope digest aby miec hovera
+            element.on('mouseover',function(){
                 scope.$apply(serviceHints.toggle(scope.name, element));
-                scope.$apply(function(){scope.class = serviceHints.class});
             })
         },
         replace: true,

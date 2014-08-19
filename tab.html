@@ -1,24 +1,16 @@
         <tab-to-subtab-pointer></tab-to-subtab-pointer>
         <div class="form-group">
             <label for="tabsNumber" ng-show="pointer.scope.numberOfTabs">
-
                 <hint-button ng-if="pointer.level=='tabs'" name="'mainMenu'"></hint-button>
-                
                 <main-title>Select number of <div class="big">{{pointer.scope.name}}</div> {{pointer.level}}: </main-title>
-             </label>
-
-                <hint-box ng-if="pointer.level=='tabs'" name="'mainMenu'">
-                    <div class="panel panel-default panel-hint">
-                        <div class="panel-body">
-                             Select number of items in main navigation bar (menu)
-                        </div>
+            </label>
+            <hint-box ng-if="pointer.level=='tabs'" name="'mainMenu'">
+                <div class="panel panel-default panel-hint">
+                    <div class="panel-body">
+                         Select number of items in main navigation bar (menu)
                     </div>
-                </hint-box>
-
-
-
-
-
+                </div>
+            </hint-box>
 <!--select number of tabs-->
             <select  class="form-control " ng-model = "pointer.scope.numberOfTabs" ng-options="i for i in ([1,2,3,4,5,6,7] | limitTo : constants.mainTabsNumber)" ng-change="pointer.scope.update(pointer.scope.numberOfTabs)" ng-show="pointer.scope.numberOfTabs"></select>
         </div>
