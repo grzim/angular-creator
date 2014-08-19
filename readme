@@ -10,10 +10,10 @@ Done:
 
 Current state (2):
   Creating unit tests with Karma.
-  Adding functionality of saving to and loading from a local drive.
+  Adding functionality of loading from a local drive.
   
 Next step to do:
-  Choose better colors, fix transitions bug on hint buttons
+  Choose better colors
   
 Working demo:
   http://www.pureepic.eu/angular/creator
