@@ -77,3 +77,24 @@ mainApp.directive("tabToSubtabPointer",function(){
         }
     }
 })*/
+
+//////////////////cube
+mainApp.directive("navigationInside",function(){
+
+    return{
+        scope: {
+            endDiv : "=scrollTo"
+        },
+        link: function(scope,element, attributes){
+            var end = document.getElementsByClassName(scope.endDiv);
+            window.onscroll = checkAndStop();
+            function checkAndStop(){
+                var elemY = element.offsetTop;
+                var endDivY = end.offsetTop + end.css("height");
+                if(elemY>endDivY){
+                    end.css("position","relative")
+                }
+                }
+        }
+    }
+})

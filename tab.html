@@ -1,5 +1,4 @@
-        <tab-to-subtab-pointer></tab-to-subtab-pointer>
-        <div class="form-group">
+          <div class="form-group">
             <label for="tabsNumber" ng-show="pointer.scope.numberOfTabs">
                 <hint-button ng-if="pointer.level=='tabs'" name="'mainMenu'"></hint-button>
                 <main-title>Select number of <div class="big">{{pointer.scope.name}}</div> {{pointer.level}}: </main-title>
@@ -16,13 +15,13 @@
         </div>
         <div class="form-group">
 <!--give names to tabs-->
-            <input type="text" ng-repeat="i in [] | range:pointer.scope.numberOfTabs" class="form-control name-{{pointer.tabNumber}}{{i}} {{pointer.level}} " placeholder="Tab {{i+1}} name" ng-model="pointer.scope.tab[i].name">
+            <input type="text" ng-repeat="i in [] | range:pointer.scope.numberOfTabs" class="tab-animation form-control name-{{pointer.tabNumber}}{{i}} {{pointer.level}} " placeholder="Tab {{i+1}} name" ng-model="pointer.scope.tab[i].name">
         </div>       
 <!--tab body-->
         <div class="form-group tabs" ng-class="{'main-tabs': pointer.level=='tabs' , 'sub-tabs': pointer.level=='subtabs'}">
             <div class="panel-group" id="accordion">
 <!--generation of tab body-->
-             <div class="panel panel-default"  ng-repeat="i in [] | range:pointer.scope.numberOfTabs" id="panel{{pointer.tabNumber}}{{i}}" ng-click="pointer.scope.selectActiveMainTab(pointer.level, i)">
+             <div class="panel panel-default tab-animation "  ng-repeat="i in [] | range:pointer.scope.numberOfTabs" id="panel{{pointer.tabNumber}}{{i}}" ng-click="pointer.scope.selectActiveMainTab(pointer.level, i)">
 <!--selecting a class of tab accordingly to its parent tab-->
                  <div  class="panel-heading"  ng-class="{'main-subtabs-{{i}}': subtabsCheckbox }">
                     <h4 class="panel-title">

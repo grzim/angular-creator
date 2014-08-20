@@ -1,57 +1,21 @@
- <html ng-app>
-    <head>
-      <title>pageTitle</title>
-             <script src="jquery.min.js"></script>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-
-        <!-- Latest compiled and minified JavaScript -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-   
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-
-        <style>
-            .centered{
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .main-container{
-
-            }
-           .navbar{
-               position: relative;
-               width: inherit;
-               margin-bottom: 0px;
-               border-radius: 5px;
-           }
-            .modal-dialog {width:600px;}
-            .thumbnail {margin-bottom:6px;}
-            .tab-container{
-                margin-bottom: 0px;
-            }
-            
-        </style>
-    </head>
-<body>
-    <div class="container main-container centered">
-        <nav class="navbar navbar-default navbar-fixed-top main-nav " role="navigation">
-            <div class="container">
-                <div class="collapse navbar-collapse ">
-                    <div class="logo">{{pageData.value.summary.logo}}</div>
-                    <ul class="nav navbar-nav  pull-right">
-                        <li class="page-navigation">
-                            <div ng-repeat="tab in pageData.value.tabs.tab">
-                                <a ng-href="#{{tab.name}}">tab.name</a>
-                            </div>
-                        </li>
-                    </ul>
+    <div id="cube-template" class="container main-container centered">
+        <div class="logo ">{{pageData.value.summary.logo}}</div>
+        <div class="navbar-container container">
+            <nav class="navbar navbar-default  main-nav " role="navigation"> <!--navbar-fixed-top-->
+                <div class="container">
+                    <div class="collapse navbar-collapse ">
+                        <div class="nav navbar-nav  pull-right">
+                            <ul class="page-navigation">
+                                <li class="page-navigation-main-tabs" ng-repeat="tab in pageData.value.tabs.tab">
+                                    <a ng-href="#{{tab.name}}">tab.name</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
         <div class="container tab-container well">
             <div class="nav-stacked-container col-sm-4 col-md-2">
                 <ul class="nav nav-pills nav-stacked tab-details-nav">
@@ -129,5 +93,3 @@
                 $('#myModal').modal({show:true});
         });
     </script>
-</body>
-  </html>

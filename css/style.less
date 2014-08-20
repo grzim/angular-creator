@@ -1,12 +1,12 @@
 // variables
 @main-tabs-num: 7;
 @sub-tabs-num: 7;
-@main-tabs-colors-head: 'rgba(0,255,255, 0.2)',
-                        'rgba(255,0,0, 0.2)',
-                        'rgba(0,255,0, 0.2)',
-                        'rgba(255,255,0, 0.2)',
-                        'rgba(215, 102, 255, 0.2)',
-                        'rgba(255, 158, 78, 0.2)';
+@main-tabs-colors-head: 'rgba(210, 255, 255, 1)',
+                        'rgba(255, 240, 240, 1)',
+                        'rgba(226, 255, 226, 1)',
+                        'rgba(255, 255, 229, 1)',
+                        'rgba(249, 232, 255, 1)',
+                        'rgba(255, 228, 207, 1)';
 
 @main-tabs-colors-body: 'rgba(0,255,255, 0.05)',
                         'rgba(255,0,0, 0.05)',
@@ -47,7 +47,7 @@
     // create the current tile rule
     .submenu-tab-@{tile-value}
     {
-        background-color: e(extract(@main-tabs-colors-head, @i));
+      background-color: e(extract(@main-tabs-colors-head, @i));
         .panel-heading {
             background-color: e(extract(@sub-tabs-colors-head, @i));
         }
@@ -241,7 +241,6 @@ main-title{
     border-radius: 10px;
   }
   .second{
-    background-color:white;
     border-radius: 10px;
     .submenu-tab{
       border-radius: 10px;
@@ -255,6 +254,94 @@ main-title{
     padding-right: 10px;
     border-radius: 10px;
   }
+
+
+
+  .submenu-tab{
+    position: absolute;
+    opacity: 1;
+    margin-top: 0%;
+    overflow: initial;
+  }
+
+  .submenu-tab.ng-hide-add.ng-hide-add-active,
+  .submenu-tab.ng-hide-remove.ng-hide-remove-active{
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+    overflow: hidden;
+  }
+
+  .submenu-tab.ng-hide{
+    opacity: 0;
+    overflow: hidden;
+    margin-top: -50%;
+    background-color: transparent;
+  }
+
+
+  .tab-animation{
+
+  }
+
+
+
+
+  .tab-animation {
+    /*box-sizing:border-box;*/
+    -webkit-transition: 1s linear all;
+    transition: 1s linear all;
+    opacity:1;
+  }
+
+  .tab-animation.ng-move,
+  .tab-animation.ng-enter,
+  .tab-animation.ng-leave {
+    -webkit-transition:all linear 0.2s;
+    transition:all linear 0.2s;
+  }
+
+  .tab-animation.ng-leave.ng-leave-active,
+  .tab-animation.ng-move,
+  .tab-animation.ng-enter {
+    opacity:0;
+  }
+
+  .tab-animation.ng-leave,
+  .tab-animation.ng-move.ng-move-active,
+  .tab-animation.ng-enter.ng-enter-active {
+    opacity:1;
+  }
+
+  /**
+   * Stagger Leave (hide) animation
+
+  .tab-animation.ng-leave-stagger {
+    /* this will have a 100ms delay between each successive leave animation
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+
+    /* in case the stagger doesn't work then these two values
+     must be set to 0 to avoid an accidental CSS inheritance
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+  }
+
+  /**
+   * Stagger ENTER ANIMATION
+
+  .tab-animation.ng-enter-stagger {
+    /* this will have a 100ms delay between each successive enter animation
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+
+    /* in case the stagger doesn't work then these two values
+     must be set to 0 to avoid an accidental CSS inheritance
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+  }
+*/
+
+
   .second{
   //  border-bottom-right-radius: 5px;
    // border-top-right-radius: 5px;
@@ -284,4 +371,39 @@ main-title{
 }
 .buttons{
   min-height: 50px;
+}
+
+
+/////////////////////////////////cube
+
+#cube-template{
+  background-color: inherit;
+  width: inherit;
+  height: inherit;
+  .logo{
+    z-index:100;
+    position:absolute;
+    float: left;
+    background-color:red;
+    background-image: url('http://placehold.it/168x84');
+    width: 168px;
+    height: 84px;
+  }
+  .main-nav{
+    .navbar-top{
+      position: absolute;
+    }
+    .container {
+      .navbar-collapse {
+        .navbar-nav {
+          .page-navigation {
+            li.page-navigation-main-tabs {
+              display: inline;
+              font-size: 2em;
+            }
+          }
+        }
+      }
+    }
+  }
 }
