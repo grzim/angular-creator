@@ -69,6 +69,18 @@ mainApp.directive("fileread", [function () {
     }
 
 }]);
+
+mainApp.directive("addPictures",function(){
+    return{
+        restrict: 'EA',
+        scope:{
+            gallery:"=",
+            $index: "=index",
+            model: "="
+        },
+        templateUrl: "addPictures.html"
+    }
+})
 /*
 mainApp.directive("tabToSubtabPointer",function(){
     return{

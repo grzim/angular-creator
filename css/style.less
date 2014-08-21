@@ -269,8 +269,10 @@ main-title{
     }
 
     &.ng-hide-remove.ng-hide-remove-active{
-      -webkit-transition:margin-top ease-out 0.3s;
-      transition:margin-top ease-out 0.3s;
+      -webkit-transition:margin-left ease-out 0.3s;
+      transition:margin-left ease-out 0.3s;
+      /*-webkit-transition:margin-top ease-out 0.3s;
+      transition:margin-top ease-out 0.3s;*/
       -webkit-transition-delay: 0.2s;
       transition-delay: 0.2s;
       overflow: hidden;
@@ -279,7 +281,8 @@ main-title{
       opacity: 0;
       overflow: hidden;
       background-color: transparent;
-      margin-top:-250%;
+      margin-left:100%;
+     /* margin-top:-250%;*/
     }
   }
 
@@ -287,9 +290,53 @@ main-title{
   .tab-animation{
 
   }
+  .number-of-tabs-container{
+    padding-top:5px;
+    padding-left:5px;
+  }
 
-
-
+  .form-container{
+    padding-top:5px;
+    padding-bottom:5px;
+    border-right:ridge 1px;
+    border-left:ridge 1px;
+    &:last-of-type{
+      border-bottom:ridge 1px;
+    }
+  }
+  .even-form{
+    background-color: rgba(198, 127, 0, 0.1);
+  }
+  .thumb-image-container {
+    line-height: 132px;
+    .thumb-image {
+      max-height: 125px;
+      max-width: 125px;
+      margin-left:-6px;
+      vertical-align: middle;
+    }
+  }
+  .tab-content{
+    border-right:ridge 1px;
+    border-left:ridge 1px;
+  }
+  .left-right-border{
+    border-right:ridge 1px;
+    border-left:ridge 1px;
+  }
+  .drop-file{
+    border: 2px green;
+    border-style: dashed;
+    margin-bottom: 5px;
+    padding:0;
+    .drop{
+      margin-right:10px;
+    }
+  }
+  .picture-descriptions-container{
+    padding:0;
+    display: inline-block;
+  }
 
   .tab-animation {
     /*box-sizing:border-box;*/

@@ -1,4 +1,4 @@
-var mainApp = angular.module("mainApp", ['ngAnimate', 'ngRoute']);
+var mainApp = angular.module("mainApp", ['ngAnimate', 'ngRoute','flow']);
 
 
 mainApp.config(function($routeProvider, $locationProvider) {

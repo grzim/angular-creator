@@ -79,6 +79,13 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
         subtabs: false,
         additionalContent: false
     }
+    $scope.updatee = {
+        picture : function(model, newFile){
+            alert('a');
+            model.file = newFile;
+            console.error(newFile)
+        }
+    }
     $scope.setQuestUrl = function(url){
         var loc = $location.path();
         $scope.section.setQuestUrl(url);
@@ -102,7 +109,6 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
             this.numberOfTabs=1;
         },
         selectActiveMainTab : function(level,tab){
-        console.log(this.activeMainTab);
             if (level === "tabs") this.activeMainTab = tab;
         }
     }
@@ -221,7 +227,7 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
     function Media(){
         this.title;
         this.description;
-        this.file;
+        this.file = {};
     }
 
 
