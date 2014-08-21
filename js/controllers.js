@@ -140,8 +140,23 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
             fanpage: $scope.fanpage
         }
         console.log(pageData.tabs);
-        sharedProperties.setPageData(pageData);
         var localStoreData = pageData;
+        for(var i in localStoreData.tabs.tab){
+            console.log(localStoreData.tabs.tab[i]);
+            for(var pi in localStoreData.tabs.tab[i].pictures.list){
+                localStoreData.tabs.tab[i].pictures.list[pi].file[0].flowObj = {};
+                localStoreData.tabs.tab[i].pictures.list[pi].file[0].chunks[0]= {};
+                localStoreData.tabs.tab[i].pictures.list[pi].file[0].chunks[0].flowObj = {};
+            }
+            localStoreData.tabs.tab[i].gallery = {};
+            for(var j in  localStoreData.tabs.tab[i].subtabs) {
+                localStoreData.tabs.tab[i].subtab[j].pictures = {};
+                localStoreData.tabs.tab[i].subtab[j].gallery = {};
+            }
+        }
+        sharedProperties.setPageData(pageData);
+        //var localStoreData = {};//pageData;
+/*
         //change this to something smarter, ie underscore
         for(var i in localStoreData.tabs.tab){
             console.log(localStoreData.tabs.tab[i]);
@@ -153,7 +168,7 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
             }
         }
 
-        localStorage.setItem($scope.summary.urlName, angular.toJson(localStoreData, true));
+        localStorage.setItem($scope.summary.urlName, angular.toJson(localStoreData, true));*/
         $scope.section.questUrl = $location.path();
         $location.path('/' +$scope.summary.urlName+'/preview');
         $scope.section.pageUrl = $location.path();
@@ -163,9 +178,11 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
             if($location.path() === $scope.section.questUrl)
                 $scope.section.goToQuest();
             if($location.path() === $scope.section.pageUrl)
-                $scope.section.goToPage();
-        }) );
-        console.log(pageData);
+               $scope.section.goToPage();
+            console.log(pageData);
+
+       }) );
+       console.log(pageData);
 
     }
 
@@ -208,6 +225,7 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
         this.pictures= {
             init : function(){
                 arrayInterface.call(this, Picture,  "list");
+                console.log(this);
                 this.update(constants.startPictures);
                 return constants.startPictures;
             }

@@ -51,9 +51,10 @@ mainApp.service("sharedProperties",function(){
             return this.pageData;
         },
         setPageData: function(obj){
+            console.log(angular.toJson(obj, true));
             this.pageData.value=obj;
             this.pageName = obj.summary.urlName;
-            this.allNames.push(obj.summary.urlName);
+          //  this.allNames.push(obj.summary.urlName);
         },
         loadPageData: function(obj){
             this.pageData.value=obj;

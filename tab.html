@@ -75,21 +75,21 @@
 
                                     <div class="form-group gallery{{i}}" ng-repeat="pic in pointer.scope.tab[i].pictures.list">
                                         <div flow-init="{singleFile:true}" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
-                                            <div ng-init="pic.file = $flow" class="col-sm-12 form-container" ng-class-even="'even-form'">
+                                            <div ng-init="pic.file = $flow.files" class="col-sm-12 form-container" ng-class-even="'even-form'">
                                                 <label for="exampleInputFile">Select picture from disc:</label>
-                                                <div class="drop-file col-sm-9" flow-drop >
+                                                <div class="drop-file col-sm-9" flow-drop ng-class="{'pull-right': ($flow.files[0].name)}">
                                                     <span class="btn btn-success" flow-btn>Upload File</span>
                                                     <span class="pull-right drop" flow-drag-enter="drop-on"><b>OR</b>
                                                     Drag And Drop your images here</span>
                                                 </div>
-                                                <div class="thumb-image-container col-sm-3 pull-right">
-                                                    <img flow-img="$flow.files[0]" class="thumb-image"/>
-                                                </div>
-                                                <div class="picture-descriptions-container col-sm-9 pull-left">
+                                                <div class="picture-descriptions-container col-sm-9" ng-class="{'pull-right': ($flow.files[0]).name}">
                                                     <input type="text" class="form-control picture-title-{{$index}}"
                                                            placeholder="Photo title"  ng-model="pic.title">
                                                     <textarea class="form-control picture-description-{{$index}}" rows="2"
                                                               placeholder="Photo description"  ng-model="pic.description"></textarea>
+                                                </div>
+                                                <div class="thumb-image-container col-sm-3 pull-left" >
+                                                    <img flow-img="$flow.files[0]" class="thumb-image"/>
                                                 </div>
                                              </div>
                                       </div>

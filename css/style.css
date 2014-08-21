@@ -301,6 +301,13 @@ main-title .big {
   margin-left: 100%;
   /* margin-top:-250%;*/
 }
+.quest-container .pull-right-smooth {
+  -webkit-transition: all ease-out 0.5s;
+  transition: all ease-out 0.5s;
+}
+.quest-container .pull-right-smooth-animation {
+  float: right;
+}
 .quest-container .number-of-tabs-container {
   padding-top: 5px;
   padding-left: 5px;
@@ -323,7 +330,7 @@ main-title .big {
 .quest-container .thumb-image-container .thumb-image {
   max-height: 125px;
   max-width: 125px;
-  margin-left: 1px;
+  margin-left: -6px;
   vertical-align: middle;
 }
 .quest-container .tab-content {
