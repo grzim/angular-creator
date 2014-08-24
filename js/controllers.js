@@ -209,7 +209,7 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
                 console.info(json);
                 var blob = new Blob([json], {type: "application/json"});
                 var url = URL.createObjectURL(blob);
-                element.download    = $scope.summary.name;
+                element.download    = $scope.summary.name + '.epic';
                 element.href        = url;
         }
     }
