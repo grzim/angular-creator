@@ -354,7 +354,7 @@ main-title .big {
 }
 .quest-container .thumb-image-container .thumb {
   height: auto;
-  width: 165px;
+  width: auto;
 }
 .quest-container .thumb-image-container .thumb .number {
   position: absolute;
@@ -372,8 +372,7 @@ main-title .big {
   border: solid 1px;
 }
 .quest-container .thumb-image-container .thumb-image {
-  max-height: 165px;
-  max-width: 165px;
+  width: 100%;
   vertical-align: middle;
 }
 .quest-container .tab-content {
