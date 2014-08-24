@@ -140,20 +140,28 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
             fanpage: $scope.fanpage
         }
         console.log(pageData.tabs);
-        var localStoreData = pageData;
-        for(var i in localStoreData.tabs.tab){
-            console.log(localStoreData.tabs.tab[i]);
-            for(var pi in localStoreData.tabs.tab[i].pictures.list){
-                localStoreData.tabs.tab[i].pictures.list[pi].file[0].flowObj = {};
-                localStoreData.tabs.tab[i].pictures.list[pi].file[0].chunks[0]= {};
-                localStoreData.tabs.tab[i].pictures.list[pi].file[0].chunks[0].flowObj = {};
+
+        for(var i in pageData.tabs.tab){
+            var picList = [];
+            for(var file in pageData.tabs.tab[i].pictures.list.files){
+                if(file == constants.maxPictures){
+                    break;
+                }
+                var pic = new Picture();
+                pic.name = pageData.tabs.tab[i].pictures.list.files[file].title;
+                pic.description = pageData.tabs.tab[i].pictures.list.files[file].description;
+                pic.file = pageData.tabs.tab[i].pictures.list.files[file].file;
+                picList.push(pic);
             }
-            localStoreData.tabs.tab[i].gallery = {};
-            for(var j in  localStoreData.tabs.tab[i].subtabs) {
-                localStoreData.tabs.tab[i].subtab[j].pictures = {};
-                localStoreData.tabs.tab[i].subtab[j].gallery = {};
+            pageData.tabs.tab[i].pictures.list = picList;
+
+            pageData.tabs.tab[i].gallery = {};
+            for(var j in  pageData.tabs.tab[i].subtabs) {
+                pageData.tabs.tab[i].subtab[j].pictures = {};
+                pageData.tabs.tab[i].subtab[j].gallery = {};
             }
         }
+        console.log(pageData.tabs);
         sharedProperties.setPageData(pageData);
         //var localStoreData = {};//pageData;
 /*
@@ -169,10 +177,7 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
         }
 
         localStorage.setItem($scope.summary.urlName, angular.toJson(localStoreData, true));*/
-        $scope.section.questUrl = $location.path();
-        $location.path('/' +$scope.summary.urlName+'/preview');
-        $scope.section.pageUrl = $location.path();
-        $scope.section.goToPage();
+
 
         $scope.listeners.history.push ( $rootScope.$on('$locationChangeSuccess', function(object, newLocation, previousLocation) {
             if($location.path() === $scope.section.questUrl)
@@ -182,6 +187,9 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
             console.log(pageData);
 
        }) );
+        $scope.section.questUrl = $location.path();
+        $location.path('/' +$scope.summary.urlName+'/preview');
+        $scope.section.pageUrl = $location.path();
        console.log(pageData);
 
     }
@@ -230,6 +238,8 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
                 return constants.startPictures;
             }
         };
+        this.pictures.init();
+
         this.video = new Video();
         this.gallery = {
             init : function(){

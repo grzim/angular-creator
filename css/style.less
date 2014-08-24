@@ -231,9 +231,17 @@ main-title{
     }
   }
 }
-
+.border-left-right{
+  margin-left:-1px;
+  margin-right:1px;
+  border-left: 1px ridge;
+  border-right: 1px ridge;
+}
+.select-pictures-label{
+  margin-bottom:0px;
+}
 .quest-container{
-  padding-top: 10px;
+  padding-top: 15px;
   padding-bottom: 10px;
   background-color:  #536E81;
   .first{
@@ -304,15 +312,58 @@ main-title{
       border-bottom:ridge 1px;
     }
   }
+  .flow-container{
+    &:last-child{
+      border-bottom:ridge 1px;
+    }
+  }
   .even-form{
     background-color: rgba(198, 127, 0, 0.1);
   }
+  .no-padding{
+    padding:0px;
+  }
+  .margin-left-right{
+    margin-left:10px;
+    margin-right:10px;
+  }
+  .margin-top-bottom{
+    margin-top:10px;
+    margin-bottom:10px;
+  }
+  .too-many{
+    opacity: 0.5;
+    &.number{
+      opacity:1;
+      color:red;
+      font-weight: bold;
+      font-size:1.2em;
+    }
+  }
   .thumb-image-container {
-    line-height: 132px;
+    padding-left:0px;
+    .thumb{
+      height:auto;
+      width:165px;
+      .number{
+        position: absolute;
+        top: -5px;
+        right: 8px;
+        padding-left: 5px;
+        padding-bottom: 0px;
+        background-color: white;
+        border-bottom-left-radius: 10px;
+      }
+      .btn{
+        position: absolute;
+        top: -4px;
+        left: -11px;
+        border: solid 1px;
+      }
+    }
     .thumb-image {
-      max-height: 125px;
-      max-width: 125px;
-      margin-left:-6px;
+      max-height: 165px;
+      max-width: 165px;
       vertical-align: middle;
     }
   }
@@ -334,7 +385,7 @@ main-title{
     }
   }
   .picture-descriptions-container{
-    padding:0;
+    padding-right:px;
     display: inline-block;
   }
 

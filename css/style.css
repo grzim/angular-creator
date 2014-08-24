@@ -225,8 +225,17 @@ main-title .big {
 .main-container .main-nav .page-navigation {
   display: inline-block;
 }
+.border-left-right {
+  margin-left: -1px;
+  margin-right: 1px;
+  border-left: 1px ridge;
+  border-right: 1px ridge;
+}
+.select-pictures-label {
+  margin-bottom: 0px;
+}
 .quest-container {
-  padding-top: 10px;
+  padding-top: 15px;
   padding-bottom: 10px;
   background-color: #536E81;
   /**
@@ -301,13 +310,6 @@ main-title .big {
   margin-left: 100%;
   /* margin-top:-250%;*/
 }
-.quest-container .pull-right-smooth {
-  -webkit-transition: all ease-out 0.5s;
-  transition: all ease-out 0.5s;
-}
-.quest-container .pull-right-smooth-animation {
-  float: right;
-}
 .quest-container .number-of-tabs-container {
   padding-top: 5px;
   padding-left: 5px;
@@ -321,16 +323,57 @@ main-title .big {
 .quest-container .form-container:last-of-type {
   border-bottom: ridge 1px;
 }
+.quest-container .flow-container:last-child {
+  border-bottom: ridge 1px;
+}
 .quest-container .even-form {
   background-color: rgba(198, 127, 0, 0.1);
 }
+.quest-container .no-padding {
+  padding: 0px;
+}
+.quest-container .margin-left-right {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.quest-container .margin-top-bottom {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.quest-container .too-many {
+  opacity: 0.5;
+}
+.quest-container .too-many.number {
+  opacity: 1;
+  color: red;
+  font-weight: bold;
+  font-size: 1.2em;
+}
 .quest-container .thumb-image-container {
-  line-height: 132px;
+  padding-left: 0px;
+}
+.quest-container .thumb-image-container .thumb {
+  height: auto;
+  width: 165px;
+}
+.quest-container .thumb-image-container .thumb .number {
+  position: absolute;
+  top: -5px;
+  right: 8px;
+  padding-left: 5px;
+  padding-bottom: 0px;
+  background-color: white;
+  border-bottom-left-radius: 10px;
+}
+.quest-container .thumb-image-container .thumb .btn {
+  position: absolute;
+  top: -4px;
+  left: -11px;
+  border: solid 1px;
 }
 .quest-container .thumb-image-container .thumb-image {
-  max-height: 125px;
-  max-width: 125px;
-  margin-left: -6px;
+  max-height: 165px;
+  max-width: 165px;
   vertical-align: middle;
 }
 .quest-container .tab-content {
@@ -351,7 +394,7 @@ main-title .big {
   margin-right: 10px;
 }
 .quest-container .picture-descriptions-container {
-  padding: 0;
+  padding-right: px;
   display: inline-block;
 }
 .quest-container .tab-animation {

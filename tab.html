@@ -68,32 +68,45 @@
 <!-- photos -->                     
                         <div class="tab-content">
                             <div id="photo{{pointer.level}}{{pointer.tabNumber}}{{i}}" class="tab-pane fade in active" ng-show="photoCheckbox">
-                                <div class="number-of-tabs-container">
-                                    <label>Number of pictures:</label>
-                                    <input type="number" min="1" max="{{constants.maxPictures}}" ng-model="picturesNumber" ng-init="picturesNumber=pointer.scope.tab[i].pictures.init()" ng-change="pointer.scope.tab[i].pictures.update(picturesNumber)">
-                                </div>
-
-                                    <div class="form-group gallery{{i}}" ng-repeat="pic in pointer.scope.tab[i].pictures.list">
-                                        <div flow-init="{singleFile:true}" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
-                                            <div ng-init="pic.file = $flow.files" class="col-sm-12 form-container" ng-class-even="'even-form'">
-                                                <label for="exampleInputFile">Select picture from disc:</label>
-                                                <div class="drop-file col-sm-9" flow-drop ng-class="{'pull-right': ($flow.files[0].name)}">
-                                                    <span class="btn btn-success" flow-btn>Upload File</span>
-                                                    <span class="pull-right drop" flow-drag-enter="drop-on"><b>OR</b>
-                                                    Drag And Drop your images here</span>
-                                                </div>
-                                                <div class="picture-descriptions-container col-sm-9" ng-class="{'pull-right': ($flow.files[0]).name}">
-                                                    <input type="text" class="form-control picture-title-{{$index}}"
-                                                           placeholder="Photo title"  ng-model="pic.title">
-                                                    <textarea class="form-control picture-description-{{$index}}" rows="2"
-                                                              placeholder="Photo description"  ng-model="pic.description"></textarea>
-                                                </div>
-                                                <div class="thumb-image-container col-sm-3 pull-left" >
-                                                    <img flow-img="$flow.files[0]" class="thumb-image"/>
-                                                </div>
-                                             </div>
-                                      </div>
+                                <label for="exampleInputFile" class="col-sm-12 select-pictures-label">Select up to 3 pictures from a disc:</label>
+                                <div flow-init="" ng-init="pointer.scope.tab[i].pictures.list=$flow" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" class="ng-scope col-sm-12 flow-container border-left-right">
+                                    <div class="drop-container">
+                                        <div class="drop-file col-sm-12 drop" flow-drop="" ng-class="dropClass">
+                                            <span class="btn btn-success" flow-btn="">Upload Image<input type="file" multiple="multiple" style="visibility: hidden; position: absolute;"></span>
+                                            <span class="btn btn-success" flow-btn="" flow-directory="" ng-show="$flow.supportDirectory">Upload Folder of Images</span>
+                                            <b>OR</b>
+                                            Drag And Drop your images here
+                                        </div>
                                     </div>
+
+                                    <!-- ngRepeat: file in $flow.files --><div ng-repeat="file in $flow.files" class="gallery-box ng-scope col-sm-12 no-padding margin-top-bottom margin-left-right" ng-class="{'too-many' : ($index>=constants.maxPictures)}">
+
+
+
+
+                                    <div class="thumb-image-container col-sm-3" ng-show="$flow.files.length">
+                                        <div class="thumb">
+                                            <!--<div ng-style="{'background-image':'url({{file.file}}'}">-->
+                                            <img flow-img="file" class="thumb-image"/>
+                                            <div class="number" ng-class="{'too-many' : ($index>=constants.maxPictures)}">
+                                                {{$index+1}}
+                                            </div>
+                                           <!--</div>-->
+                                            <a class="btn btn-xs btn-danger" ng-click="file.cancel()">
+                                                Remove
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                    <div class="picture-descriptions-container col-sm-9">
+                                        <input type="text" class="form-control picture-title-{{$index}}"
+                                               placeholder="Photo title"  ng-model="file.title">
+                                        <textarea class="form-control picture-description-{{$index}}" rows="3"
+                                                  placeholder="Photo description"  ng-model="file.description"></textarea>
+                                    </div>
+                                </div><!-- end ngRepeat: file in $flow.files -->
+                                    <div class="clear"></div>
+                                </div>
                             </div>
 <!--videos -->
                             <div id="video{{pointer.level}}{{pointer.tabNumber}}{{i}}" class="tab-pane fade " ng-show="videoCheckbox">
