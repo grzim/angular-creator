@@ -212,11 +212,23 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
                 element.download    = $scope.summary.name + '.epic';
                 element.href        = url;
         },
-        load : function(file){
-            cosole.info(file);
-            $scope.mainTabs = file.mainTabs;
-            $scope.summary = file.summary;
-            $scope.fanpage = file.fanpage;
+        load : function(flow){
+
+            flow.upload();
+            var file =  flow.files[0].file;
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var contents = event.target.result
+                var pageData = angular.fromJson(contents);
+                console.log(pageData);
+
+                $scope.mainTabs = pageData.mainTabs;
+                $scope.summary = pageData.summary;
+                $scope.fanpage = pageData.fanpage;
+                $scope.pointer =  $scope.mainTabs;
+            };
+
+            var data = reader.readAsText(file);
         }
 
     }
