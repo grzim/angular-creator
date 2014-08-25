@@ -1,8 +1,30 @@
+<div class="page-top-nav">
+    <div class="buttons">
+        <div flow-init="" ng-init="pointer.scope=$flow" flow-files-submitted="$flow.upload()" flow-file-added="!!{epic:1}[$file.getExtension()]" class="ng-scope col-sm-12 flow-container border-left-right">
+            <div class="drop-container">
+                <span class="btn btn-success btn-load pull-left" flow-btn="">Load <hint-button name="'load2'"></hint-button><input type="file" multiple="false" style="visibility: hidden; position: absolute;"></span>
+            </div>
+            <button type="button" class="btn btn-primary pull-right" ng-click="navigation.back()">Go back</button>
+            <a ng-mousedown="file.compute($event)" id="btn-save-anchor">
+                <button type="button" class="btn btn-success btn-save pull-right" ng-click="">Save <hint-button name="'save2'"></hint-button></button>
+            </a>
+        </div>
+    </div>
 
-<button type="button" class="btn btn-primary" ng-click="navigation.back()">Go back</button>
-        Data in your local storage:
-<select ng-model="properties.pageName"  type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-options="name for name in storage.allNames" ng-change="storage.load(properties.pageName)"></select>
-<button type="button" class="btn btn-primary"  ng-click="storage.clearAll()">Clear all</button>
-<div ><textarea ng-model="pageData.value" class="form-control col-xs-6"></textarea></div>
-        image:
-<img ng-src="{{pageData.value.tabs.tab[0].pictures.list[0].file}}">{{pageData.value.tabs.tab[0].pictures.list[0].file}}
+    <div class="save-load-container">
+        <hint-box name="'save2'">
+            <div class="panel panel-default panel-hint">
+                <div class="panel-body">
+                    You can save the data that include pictures, videos and placement on your local drive.
+                </div>
+            </div>
+        </hint-box>
+        <hint-box name="'load2'">
+            <div class="panel panel-default panel-hint">
+                <div class="panel-body">
+                    You can load the file with all the data from your local drive.
+                </div>
+            </div>
+        </hint-box>
+    </div>
+</div>

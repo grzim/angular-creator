@@ -75,8 +75,8 @@ mainApp.directive("addPictures",function(){
         restrict: 'EA',
         scope:{
             gallery:"=",
-            $index: "=index",
-            model: "="
+            model: "=",
+            maxPictures: "="
         },
         templateUrl: "addPictures.html"
     }

@@ -165,10 +165,10 @@ main-title .big {
   margin-top: -50%;
 }
 .page-top-nav {
-  padding: 10px;
+  background-color: #fff7ba;
+  padding-top: 5px;
   margin: 0;
   width: 100%;
-  background-color: #92dfc1;
   position: relative;
   top: 0;
 }
@@ -220,7 +220,7 @@ main-title .big {
 }
 .btn-save .hint-button.message-disabled,
 .btn-load .hint-button.message-disabled {
-  color: #FFF7BA;
+  color: #fff7ba;
 }
 .main-container .main-nav .page-navigation {
   display: inline-block;
@@ -269,7 +269,7 @@ main-title .big {
 }
 .quest-container .first {
   padding-top: 10px;
-  background-color: #FFF7BA;
+  background-color: #fff7ba;
   border-radius: 10px;
 }
 .quest-container .second {

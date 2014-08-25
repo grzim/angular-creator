@@ -135,7 +135,7 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
 
     $scope.generate = function() {
         var pageData = {
-            tabs: $scope.mainTabs,
+            mainTabs: $scope.mainTabs,
             summary: $scope.summary,
             fanpage: $scope.fanpage
         }
@@ -201,7 +201,7 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
             var element =  document.getElementById('btn-save-anchor');
             console.error( element);
                 var pageData = {
-                    tabs: $scope.mainTabs,
+                    mainTabs: $scope.mainTabs,
                     summary: $scope.summary,
                     fanpage: $scope.fanpage
                 }
@@ -211,7 +211,14 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
                 var url = URL.createObjectURL(blob);
                 element.download    = $scope.summary.name + '.epic';
                 element.href        = url;
+        },
+        load : function(file){
+            cosole.info(file);
+            $scope.mainTabs = file.mainTabs;
+            $scope.summary = file.summary;
+            $scope.fanpage = file.fanpage;
         }
+
     }
 
     function Tab(){
@@ -248,6 +255,7 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
                 return constants.startGallery;
             }
         };
+        this.gallery.init();
         this.text;
         this.contactForm = new Contact();
     }

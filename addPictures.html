@@ -1,18 +1,36 @@
-<div class="col-sm-12 form-container" ng-class-even="'even-form'">
-    <label for="exampleInputFile">Select picture from disc:</label>
-    <div class="drop-file col-sm-9" flow-drop>
-        <span class="btn btn-success" flow-btn>Upload File</span>
-        <span class="btn btn-success" flow-btn flow-directory ng-if="gallery">Upload Directory</span>
-        <span class="pull-right drop"><b>OR</b>
-        Drag And Drop your images here</span>
+<div flow-init="" ng-init="model.list=$flow" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" class="ng-scope col-sm-12 flow-container border-left-right">
+    <div class="drop-container">
+        <div class="drop-file col-sm-12 drop" flow-drop="" ng-class="dropClass">
+            <span class="btn btn-success" flow-btn="">Upload Image<input type="file" multiple="multiple" style="visibility: hidden; position: absolute;"></span>
+            <span ng-if="gallery" class="btn btn-success" flow-btn="" flow-directory="" ng-show="$flow.supportDirectory">Upload Folder of Images</span>
+            <b>OR</b>
+            Drag And Drop your images here
+        </div>
     </div>
-    <div class="thumb-image-container col-sm-3 pull-right">
-        <img flow-img="$flow.files[$index]" class="thumb-image"/>
+
+    <!-- ngRepeat: file in $flow.files --><div ng-repeat="file in $flow.files" class="gallery-box ng-scope col-sm-12 no-padding margin-top-bottom margin-left-right" ng-class="{'too-many' : ($index>=maxPictures)}">
+
+
+
+
+    <div class="thumb-image-container col-sm-3" ng-show="$flow.files.length">
+        <div class="thumb">
+            <img flow-img="file" class="thumb-image"/>
+            <div class="number" ng-class="{'too-many' : ($index>=constants.maxPictures)}">
+                {{$index+1}}
+            </div>
+            <a class="btn btn-xs btn-danger" ng-click="file.cancel()">
+                Remove
+            </a>
+
+        </div>
     </div>
-    <div class="picture-descriptions-container col-sm-9 pull-left">
+    <div class="picture-descriptions-container col-sm-9">
         <input type="text" class="form-control picture-title-{{$index}}"
-               placeholder="Photo title"  ng-model="model.title">
-        <textarea class="form-control picture-description-{{$index}}" rows="2"
-                  placeholder="Photo description"  ng-model="model.description"></textarea>
+               placeholder="Photo title"  ng-model="file.title">
+        <textarea class="form-control picture-description-{{$index}}" rows="3"
+                  placeholder="Photo description"  ng-model="file.description"></textarea>
     </div>
+</div><!-- end ngRepeat: file in $flow.files -->
+    <div class="clear"></div>
 </div>

@@ -22,6 +22,7 @@
                         'rgba(215, 102, 255, 0.15)',
                         'rgba(255, 158, 78, 0.15)';
 
+@main-tabs-body: #FFF7BA;
 
 // mixin with a guard to create a series of bamboo tiles
 .makeTitles(@i) when (@i > 0) {
@@ -155,11 +156,12 @@ main-title{
   margin-top: -50%;
 }
 
+
 .page-top-nav{
-  padding: 10px;
+  background-color: @main-tabs-body;
+  padding-top: 5px;
   margin:0;
   width:100%;
-  background-color: #92dfc1;
   position: relative;
   top:0;
 }
@@ -218,7 +220,7 @@ main-title{
            color: white;
          }
     &.message-disabled {
-      color:  #FFF7BA;
+      color:  @main-tabs-body;
     }
   }
 }
@@ -246,7 +248,7 @@ main-title{
   background-color:  #536E81;
   .first{
     padding-top: 10px;
-    background-color: #FFF7BA;
+    background-color: @main-tabs-body;
     border-radius: 10px;
   }
   .second{
@@ -474,6 +476,7 @@ main-title{
 .buttons{
   min-height: 50px;
 }
+
 
 
 /////////////////////////////////cube
