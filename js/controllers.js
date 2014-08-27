@@ -204,7 +204,7 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
                     mainTabs: $scope.mainTabs,
                     summary: $scope.summary,
                     fanpage: $scope.fanpage
-                }
+                };
                 var json = angular.toJson(pageData, true);
                 console.info(json);
                 var blob = new Blob([json], {type: "application/json"});
@@ -214,18 +214,24 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
         },
         load : function(flow){
 
+            function deepCopy(mainTabsOriginal, mainTabsNew){
+                //cialo skopiowac
+                //dla kazdego taba ktory istnioeje przekopiowac taba z mainTabsNew
+                //dla kazdego taba ktory nie istnieje utworzyc nowego taba i przekopiowac dane z mainTabsNew
+                //dla kazdego taba ktory istnieje a nie powinien - usunac go.
+            }
             flow.upload();
             var file =  flow.files[0].file;
             var reader = new FileReader();
             reader.onload = function(event) {
-                var contents = event.target.result
+                var contents = event.target.result;
                 var pageData = angular.fromJson(contents);
-                console.log(pageData);
-
-                $scope.mainTabs = pageData.mainTabs;
-                $scope.summary = pageData.summary;
-                $scope.fanpage = pageData.fanpage;
-                $scope.pointer =  $scope.mainTabs;
+                console.log($scope);
+                angular.copy(pageData.mainTabs, $scope.mainTabs);
+                angular.copy(pageData.summary, $scope.summary);
+                angular.copy(pageData.fanpage, $scope.fanpage);
+                console.log($scope);
+                $scope.$apply();
             };
 
             var data = reader.readAsText(file);

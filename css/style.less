@@ -1,68 +1,72 @@
 // variables
 @main-tabs-num: 7;
 @sub-tabs-num: 7;
-@main-tabs-colors-head: 'rgba(210, 255, 255, 1)',
-                        'rgba(255, 240, 240, 1)',
-                        'rgba(226, 255, 226, 1)',
-                        'rgba(255, 255, 229, 1)',
-                        'rgba(249, 232, 255, 1)',
-                        'rgba(255, 228, 207, 1)';
 
-@main-tabs-colors-body: 'rgba(0,255,255, 0.05)',
-                        'rgba(255,0,0, 0.05)',
-                        'rgba(0,255,0, 0.05)',
-                        'rgba(255,255,0, 0.05)',
-                        'rgba(215, 102, 255, 0.05)',
-                        'rgba(255, 158, 78, 0.05)';
+@main-tab-body-gradient: linear-gradient(rgb(169,71,34), rgb(255, 193, 143));
+@quest-body-color: rgba(233,233,234,1);
 
-@sub-tabs-colors-head: 'rgba(0,255,255, 0.15)',
-                        'rgba(255,0,0, 0.15)',
-                        'rgba(0,255,0, 0.15)',
-                        'rgba(255,255,0, 0.15)',
-                        'rgba(215, 102, 255, 0.15)',
-                        'rgba(255, 158, 78, 0.15)';
+@button-save-body-color: rgba(71,30,17,1);
+@button-save-font-color: rgba(255,255,255,1);
+@button-generate-body-color: rgba(255,208,0,1);
+@button-generate-font-color:rgba(0,0,0,1);
 
-@main-tabs-body: #FFF7BA;
+@hint-button-active:#d9edf7;
+@hint-button-disabled: rgba(255,208,0,1);
+@hint-button-active-panel:  rgba(71,30,17,1);
+@hint-button-disabled-panel: rgba(169,71,34,1);;
 
-// mixin with a guard to create a series of bamboo tiles
+@main-title-color: @button-generate-body-color;
+
+@button-images-upload-body-color: @main-tab-body-color;
+@button-images-upload-font-color: @button-save-font-color;
+@button-images-upload-body-hover-color: @button-generate-body-color;
+@button-images-upload-font-hover-color: @button-generate-font-color;
+@button-images-upload-border-hover-color: @main-tab-body-color;;
+
+@drop-images-color: @button-save-body-color;
+@drop-images-on-drop:@button-generate-body-color;
+
+@main-tab-body-color: rgb(169,71,34);
+
+@main-tabs-colors: 'rgba(177, 160, 113, 1)',
+                        'rgba(99, 109, 109, 1)',
+                        'rgba(226, 182, 52, 1)',
+                        'rgba(155, 158, 37, 1)',
+                        'rgba(178, 121, 83, 1)',
+                        'rgba(181, 133, 0, 1)',
+                        'rgba(109,190,147,1)';
+
+
+
+
+.makeTitles(@main-tabs-num);
+
 .makeTitles(@i) when (@i > 0) {
     @title-value: @i - 1;
     // create the current tile rule
+    .submenu-tab-@{title-value}
+    {
+      background-color: e(extract(@main-tabs-colors, @i));
+        .panel-heading {
+            background-color: e(extract(@main-tabs-colors, @i));
+
+        }
+        .panel-body {
+            background-color: e(extract(@main-tabs-colors, @i));
+
+        }
+    }
     .panel-heading.main-subtabs-@{title-value} {
-        background-color: e(extract(@main-tabs-colors-head, @i));;
+      background-color: e(extract(@main-tabs-colors, @i));;
     }
     .panel-body.main-subtabs-@{title-value} {
-        background-color: e(extract(@main-tabs-colors-body, @i));;
+      background-color: e(extract(@main-tabs-colors, @i));
+
     }
  
      // next iteration
     .makeTitles((@i - 1));
 }
- 
-// create bamboo tiles numbered 0-8
-.makeTitles(@main-tabs-num);
-
-// mixin with a guard to create a series of bamboo tiles
-.makeTiles(@i) when (@i > 0) {
-    @tile-value: @i - 1;
-    // create the current tile rule
-    .submenu-tab-@{tile-value}
-    {
-      background-color: e(extract(@main-tabs-colors-head, @i));
-        .panel-heading {
-            background-color: e(extract(@sub-tabs-colors-head, @i));
-        }
-        .panel-body {
-            background-color: e(extract(@main-tabs-colors-body, @i));
-        }
-    }
- 
-     // next iteration
-    .makeTiles((@i - 1));
-}
- 
-// create bamboo tiles numbered 0-8
-.makeTiles(@sub-tabs-num);
 
 .panel-body{
     .hint.alert{
@@ -77,10 +81,10 @@
 
 main-title{
     font-size: 1.5em;
-    .big{
+    .tab-name{
         display: inline-block;
         font-size: 1.2em;
-        color: rgb(183, 0, 5);
+        color: @main-title-color;
     }
 }
 
@@ -158,7 +162,7 @@ main-title{
 
 
 .page-top-nav{
-  background-color: @main-tabs-body;
+  background-color: @main-tab-body-color;
   padding-top: 5px;
   margin:0;
   width:100%;
@@ -192,18 +196,29 @@ main-title{
 
 .hint-button{
   font-size: 1em;
-  color: black;
+  color: @hint-button-disabled;
   -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 02s;
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s;
 
   &.message-active{
-      color: rgb(49, 112, 143);
+      color: @hint-button-active;
       font-size: 1.3em;
       border-radius: 12px;
   }
   &.message-disabled{
-      color: black;
+      color: @hint-button-disabled;
       border-radius: 8px;
+  }
+}
+.panel{
+  .message-active{
+    color: @hint-button-active-panel;
+    font-size: 1.3em;
+    border-radius: 12px;
+  }
+  .message-disabled{
+    color: @hint-button-disabled-panel;
+    border-radius: 8px;
   }
 }
 
@@ -214,14 +229,50 @@ main-title{
   }
 }
 .btn-save, .btn-load{
+  border-color: @button-save-body-color;;
+  background-color: @button-save-body-color;
+  color: @button-save-font-color;
   margin-right: 10px;
   .hint-button{
     &.message-active {
-           color: white;
+           color: @hint-button-active;
          }
     &.message-disabled {
-      color:  @main-tabs-body;
+      color:  @button-generate-body-color;
     }
+  }
+  &:hover{
+    border-color: @button-generate-body-color;
+    background-color: @button-generate-body-color;
+    color: @button-generate-font-color;
+    .hint-button{
+      &.message-active {
+        color: @hint-button-active-panel;
+      }
+      &.message-disabled {
+        color:  @hint-button-disabled-panel;
+      }
+    }
+  }
+}
+
+.btn-generate{
+  border-color: @button-generate-body-color;
+  background-color: @button-generate-body-color;
+  color: @button-generate-font-color;
+  margin-right: 10px;
+  .hint-button{
+    &.message-active {
+      color: @hint-button-active;
+    }
+    &.message-disabled {
+      color:  @button-save-body-color;
+    }
+  }
+  &:hover{
+    border-color: @button-save-body-color;;
+    background-color: @button-save-body-color;
+    color: @button-save-font-color;
   }
 }
 
@@ -245,10 +296,10 @@ main-title{
 .quest-container{
   padding-top: 15px;
   padding-bottom: 10px;
-  background-color:  #536E81;
+  background-color:  @quest-body-color;
   .first{
     padding-top: 10px;
-    background-color: @main-tabs-body;
+    background:@main-tab-body-color;
     border-radius: 10px;
   }
   .second{
@@ -269,12 +320,11 @@ main-title{
     position: absolute;
     opacity: 1;
     overflow: initial;
-    margin-top:0%;
     margin-left:-20px;
 
     &.ng-hide-add.ng-hide-add-active{
-      -webkit-transition:all  ease-in 0.3s;
-      transition:all ease-in 0.3s;
+      -webkit-transition:margin-left  ease-in 0.3s;
+      transition:margin-left ease-in 0.3s;
       overflow: hidden;
     }
 
@@ -314,7 +364,7 @@ main-title{
       border-bottom:ridge 1px;
     }
   }
-  .flow-container{
+  .flow-container.border-left-right{
     &:last-child{
       border-bottom:ridge 1px;
     }
@@ -376,14 +426,30 @@ main-title{
     border-right:ridge 1px;
     border-left:ridge 1px;
   }
-  .drop-file{
-    border: 2px green;
-    border-style: dashed;
+  .drop-container{
     margin-bottom: 5px;
     padding:0;
-    .drop{
+    .drop-images{
       margin-right:10px;
+      border: 2px dashed @drop-images-color;
+      &.drag-over{
+        background-color: @drop-images-on-drop;
+      }
     }
+
+  }
+  .button-upload-images{
+    background-color: @button-images-upload-body-color;
+    color: @button-images-upload-font-color;
+    border: none;
+    padding: 6px 12px;
+    &:hover{
+      background-color: @button-images-upload-body-hover-color;
+      color: @button-images-upload-font-hover-color;
+      border: 2px solid @button-images-upload-border-hover-color;
+      padding: 4px 10px;;
+    }
+
   }
   .picture-descriptions-container{
     padding-right:px;

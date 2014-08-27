@@ -1,8 +1,8 @@
 <div flow-init="" ng-init="model.list=$flow" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" class="ng-scope col-sm-12 flow-container border-left-right">
     <div class="drop-container">
-        <div class="drop-file col-sm-12 drop" flow-drop="" ng-class="dropClass">
-            <span class="btn btn-success" flow-btn="">Upload Image<input type="file" multiple="multiple" style="visibility: hidden; position: absolute;"></span>
-            <span ng-if="gallery" class="btn btn-success" flow-btn="" flow-directory="" ng-show="$flow.supportDirectory">Upload Folder of Images</span>
+        <div class="drop-file col-sm-12 drop-images" flow-drop ng-class="dropClass">
+            <span class="btn btn-success button-upload-images" flow-btn="">Upload Image<input type="file" multiple="multiple" style="visibility: hidden; position: absolute;"></span>
+            <span ng-if="gallery" class="btn btn-success button-upload-images" flow-btn="" flow-directory="" ng-show="$flow.supportDirectory">Upload Folder of Images</span>
             <b>OR</b>
             Drag And Drop your images here
         </div>
