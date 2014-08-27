@@ -13,7 +13,6 @@ mainApp.directive('tab',function(constants){
             scope.pointer.level = scope.obj.level;
             scope.pointer.scope = scope.obj;
             scope.pointer.tabNumber = scope.index || "";
-            scope.pointer.scope.init();
             console.log(scope.pointer.scope);
         },
         templateUrl: 'tab.html'

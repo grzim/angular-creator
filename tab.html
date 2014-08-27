@@ -36,11 +36,11 @@
                     <div class="panel-body"  ng-class="{'main-subtabs-{{i}}': subtabsCheckbox }">
 <!--generation of subtabs -->
                         <label  ng-show="pointer.level=='tabs'">
-                            <input  type="checkbox" ng-model="subtabsCheckbox">
+                            <input  type="checkbox" ng-model="pointer.scope.tab[i].subtabsFlag">
                             Subtabs
                         </label>
                         <hint-button name="'subTabs'" ng-if="pointer.level=='tabs' && $index==0"></hint-button>
-                        <input ng-if="pointer.level=='tabs'"  ng-show="subtabsCheckbox" type="number" min="0" max="{{constants.subTabsNumber}}" ng-model="pointer.scope.tab[i].numberOfTabs" ng-change="pointer.scope.tab[i].update(pointer.scope.tab[i].numberOfTabs)">
+                        <input ng-if="pointer.level=='tabs'"  ng-show="pointer.scope.tab[i].subtabsFlag" type="number" min="0" max="{{constants.subTabsNumber}}" ng-model="pointer.scope.tab[i].numberOfTabs" ng-change="pointer.scope.tab[i].update(pointer.scope.tab[i].numberOfTabs)">
                         <hint-box name="'subTabs'"  ng-if="pointer.level=='tabs' && $index==0 ">
                             Select if you wish to have a submenu in this tab
                         </hint-box>

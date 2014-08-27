@@ -104,6 +104,8 @@ function arrayInterface(obj, arrayName){
     };
     var that = this;
     this.update = function(number){
+        if(angular.isUndefined(number))
+            number = 1;
         var length = r(array.length);
       if(length>number){
             while(length>number){

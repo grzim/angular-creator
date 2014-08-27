@@ -29,7 +29,6 @@
     <div ng-controller="QuestCtrl" class="col-sm-12 quest-container section" ng-show="section.quest">
         <form role="form" class="col-sm-6 " ng-click="text()">
             <div class="first col-xs-12">
-              <!-- <tab name="main-menu" scope="mainTabs" level="tabs" number="" ng-init="init()"></tab>-->
             <div class="quest">
                 <div ng-include="'summary.html'"></div>
                 <tab name="mainTabs"></tab>
@@ -74,7 +73,7 @@
 
         <form role="form" class="col-sm-6 ">
             <div  ng-repeat="tab in mainTabs.tab"  class="submenu second">
-                <div class="submenu-tab-{{$index}} submenu-tab  col-sm-12"  ng-show="(mainTabs.tab[$index].numberOfTabs!=0) && ($index==mainTabs.activeMainTab)">
+                <div class="submenu-tab-{{$index}} submenu-tab  col-sm-12"  ng-show="(mainTabs.tab[$index].numberOfTabs!=0) && ($index==mainTabs.activeMainTab) && (mainTabs.tab[$index].subtabsFlag ==true)">
                   <div class="quest ">
                     <tab name = "tab"   index ="$index" ></tab>
                   </div>
