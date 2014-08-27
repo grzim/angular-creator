@@ -1,20 +1,12 @@
-The aim of the project is to create an UI for gathering data which will stored and rendered into diffrient layout templates.
+The aim of the project is to create an UI for gathering data which will be stored and rendered into diffrient layout templates.
 Project consist of 3 parts:
 1) Create an interface and MVC architecture to gather and store data, in a form that will be accessible for templates controllers.
-2) Create an interface for saving the data localy
-3) Create templates that will work with the data
+2) Create templates that will work with the data
+3) Create server side
 
-Done:
-  (1) Interface for creating JSON which stores data for template.
-  (2) Saving using local store HTML5 API.
+Current state:
+  Polishing (1)
 
-Current state (2):
-  Creating unit tests with Karma.
-  Adding functionality of loading from a local drive.
-  
-Next step to do:
-  Choose better colors
-  
 Working demo:
   http://www.pureepic.eu/angular/creator
   
