@@ -39,11 +39,11 @@
 
 
                 <div class="buttons">
-                    <div flow-init=""  flow-files-submitted="file.load($flow)" class="ng-scope col-sm-12 flow-container border-left-right">
+                    <div flow-init=""  flow-files-submitted="file.load($flow)" class="ng-scope col-sm-12 flow-container">
                         <div class="drop-container">
                                 <span class="btn btn-success btn-load pull-left" flow-btn="">Load <hint-button name="'load'"></hint-button><input type="file" multiple="false" style="visibility: hidden; position: absolute;"></span>
                         </div>
-                    <button type="button" id="btn-generate" class="btn btn-primary pull-right" ng-click="generate()">Generate</button>
+                    <button type="button" id="btn-generate" class="btn btn-primary pull-right btn-generate" ng-click="generate()">Generate</button>
                     <a ng-mousedown="file.compute($event)" id="btn-save-anchor">
                         <button type="button" class="btn btn-success btn-save pull-right" ng-click="">Save <hint-button name="'save'"></hint-button></button>
                     </a>
