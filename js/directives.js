@@ -69,6 +69,39 @@ mainApp.directive("fileread", [function () {
 
 }]);
 
+mainApp.directive('listChange',function(){
+    return{
+        restrict: 'EA',
+        scope: {
+            list: "=",
+            index: "=",
+            up: "=",
+            down: "=",
+            max: "="
+        },
+        link: function(scope, element){
+            element.on("click",function(){
+                var temp;
+                if(scope.index==0 && scope.up==true)
+                    return;
+                if(scope.index==scope.max && scope.down==true)
+                    return;
+                if(scope.down==true){
+                    temp = scope.list[scope.index-1];
+                    scope.list[scope.index-1] = scope.list[scope.index];
+                    scope.list[scope.index] = temp;
+                }
+                if(scope.up==true){
+                    temp = scope.list[scope.index+1];
+                    scope.list[scope.index+1] = scope.list[scope.index];
+                    scope.list[scope.index] = temp;
+                }
+            })
+        },
+        template:'<span class="glyphicon" ng-class="{\'glyphicon-arrow-up\':up, \'glyphicon-arrow-down\':down, \'up\':up, \'down\':down}"></span>'
+    }
+})
+
 mainApp.directive("addPictures",function(){
     return{
         restrict: 'EA',

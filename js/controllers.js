@@ -155,22 +155,6 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
             }
         }
         sharedProperties.setPageData(pageData);
-        //var localStoreData = {};//pageData;
-/*
-        //change this to something smarter, ie underscore
-        for(var i in localStoreData.tabs.tab){
-            console.log(localStoreData.tabs.tab[i]);
-            localStoreData.tabs.tab[i].pictures = {};
-            localStoreData.tabs.tab[i].gallery = {};
-            for(var j in  localStoreData.tabs.tab[i].subtabs) {
-                localStoreData.tabs.tab[i].subtab[j].pictures = {};
-                localStoreData.tabs.tab[i].subtab[j].gallery = {};
-            }
-        }
-
-        localStorage.setItem($scope.summary.urlName, angular.toJson(localStoreData, true));*/
-
-
         $scope.listeners.history.push ( $rootScope.$on('$locationChangeSuccess', function(object, newLocation, previousLocation) {
             if($location.path() === $scope.section.questUrl)
                 $scope.section.goToQuest();
@@ -189,7 +173,6 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
     $scope.file = {
         value: {},
         compute : function(event){
-            //how to target event originator?
             var element =  document.getElementById('btn-save-anchor');
             console.error( element);
                 var pageData = {
@@ -205,32 +188,6 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
                 element.href        = url;
         },
         load : function(flow){
-/*
-            function deepCopy(mainTabsOriginal, mainTabsNew){
-                mainTabsOriginal.numberOfTabs = mainTabsNew.mainTabsOriginal;
-               for(var i=0;i<constants.mainTabsNumber;i++){
-                   if(angular.isDefined(mainTabsOriginal.tab[i]) && angular.isDefined(mainTabsOriginal.tab[i])){
-                       angular.copy(mainTabsOriginal.tab[i], mainTabsOriginal.tab[i]);
-                   }
-                   if(angular.isDefined(mainTabsOriginal.tab[i]) && angular.isUndefined(mainTabsOriginal.tab[i])){
-                       mainTabsOriginal.tab[i] = {};
-                   }
-                   if(angular.isUndefined(mainTabsOriginal.tab[i]) && angular.isDefined(mainTabsOriginal.tab[i])){
-
-                   }
-                   if(angular.isUndefined(mainTabsOriginal.tab[i]) && angular.isUndefined(mainTabsOriginal.tab[i])){
-
-                   }
-
-                   for(var j=0;j<constants.subTabsNumber;j++){
-
-                   }
-                }
-                //cialo skopiowac
-                //dla kazdego taba ktory istnioeje przekopiowac taba z mainTabsNew
-                //dla kazdego taba ktory nie istnieje utworzyc nowego taba i przekopiowac dane z mainTabsNew
-                //dla kazdego taba ktory istnieje a nie powinien - usunac go.
-            }*/
             flow.upload();
             var file =  flow.files[0].file;
             var reader = new FileReader();
@@ -244,10 +201,8 @@ mainApp.controller("QuestCtrl",function($scope, $location, $rootScope, constants
                 console.log($scope);
                 $scope.$apply();
             };
-
             var data = reader.readAsText(file);
         }
-
     }
 
     function Tab(){

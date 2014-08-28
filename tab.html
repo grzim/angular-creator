@@ -21,19 +21,26 @@
         <div class="form-group tabs" ng-class="{'main-tabs': pointer.level=='tabs' , 'sub-tabs': pointer.level=='subtabs'}">
             <div class="panel-group" id="accordion">
 <!--generation of tab body-->
-             <div class="panel panel-default tab-animation "  ng-repeat="i in [] | range:pointer.scope.numberOfTabs" id="panel{{pointer.tabNumber}}{{i}}" ng-click="pointer.scope.selectActiveMainTab(pointer.level, i)">
+               <div class="panel panel-default tab-animation "  ng-repeat="i in [] | range:pointer.scope.numberOfTabs" id="panel{{pointer.tabNumber}}{{i}}" ng-click="pointer.scope.selectActiveMainTab(pointer.level, i)">
 <!--selecting a class of tab accordingly to its parent tab-->
-                 <div  class="panel-heading"  ng-class="{'main-subtabs-{{i}}': subtabsCheckbox }">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-target="#collapse{{i}}" href="#collapse{{i}}"  ng-model="panelHeading" ng-init="panelHeading=true"  ng-click="panelHeading=!panelHeading">
-                            Description of tab {{pointer.scope.tab[i].name}} 
-                            <span class="col-xs-2 glyphicon" ng-class="{' glyphicon-chevron-up': panelHeading, ' glyphicon-chevron-down': !panelHeading }"></span> 
-                            <span ng-if="pointer.level=='tabs'" class="badge pull-right " ng-show="subtabsCheckbox">{{pointer.scope.tab[i].numberOfTabs}}</span>
-                        </a>
-                    </h4>
+                <div class="arrows-box" ng-if="(pointer.scope.numberOfTabs>1) &&  (pointer.level=='tabs')">
+                    <list-change list="pointer.scope.tab" max="pointer.scope.numberOfTabs" index="$index" up="true" ng-if="$index>0" ></list-change>
+                    <div class="move-text">MOVE</div>
+                    <list-change list="pointer.scope.tab" max="pointer.scope.numberOfTabs" index="$index" down="true" ng-if="$index<pointer.scope.numberOfTabs-1" ></list-change>
                 </div>
-                <div id="collapse{{i}}" class="panel-collapse collapse in">
-                    <div class="panel-body"  ng-class="{'main-subtabs-{{i}}': subtabsCheckbox }">
+
+                <div  class="panel-heading"  ng-class="{'main-subtabs-{{i}}': pointer.scope.tab[i].subtabsFlag }">
+                     <a  class="panel-title panel-anchor" data-toggle="collapse" data-target="#collapse{{pointer.level}}{{pointer.tabNumber}}{{i}}" ng-model="panelHeading" ng-init="panelHeading=true"  ng-click="panelHeading=!panelHeading">
+                         <h4 class="panel-title">
+                             Description of tab {{pointer.scope.tab[i].name}}
+                            <span class="col-xs-2 glyphicon tab-header-arrow" ng-class="{' glyphicon-chevron-up': panelHeading, ' glyphicon-chevron-down': !panelHeading }"></span>
+                            <span ng-if="pointer.level=='tabs'" class="badge pull-right " ng-show="pointer.scope.tab[i].subtabsFlag">{{pointer.scope.tab[i].numberOfTabs}}</span>
+
+                        </h4>
+                     </a>
+                </div>
+                <div id="collapse{{pointer.level}}{{pointer.tabNumber}}{{i}}" class="panel-collapse collapse in">
+                    <div class="panel-body"  ng-class="{'main-subtabs-{{i}}': pointer.scope.tab[i].subtabsFlag }">
 <!--generation of subtabs -->
                         <label  ng-show="pointer.level=='tabs'">
                             <input  type="checkbox" ng-model="pointer.scope.tab[i].subtabsFlag">
@@ -45,7 +52,7 @@
                             Select if you wish to have a submenu in this tab
                         </hint-box>
                         <div ng-if="pointer.level=='tabs'">
-                            <small ng-show="subtabsCheckbox">When you leave all of below blank it will be considered just as a name for subtabs</small>
+                            <small ng-show="pointer.scope.tab[i].subtabsFlag">When you leave all of below blank it will be considered just as a name for subtabs</small>
                         </div>
 <!--tab body-->
                         <label for="tab{{i+1}}-text"> Main text:</label>
@@ -59,15 +66,14 @@
                         </div>
                         <hint-box ng-if="pointer.level=='tabs' && $index==0" name="contact">Select what kind of additional content you wish to have</hint-box>
                         <ul class="nav nav-tabs" role="tablist">
-                            <li ng-show="photoCheckbox" class="active"><a data-toggle="tab" href="#photo{{pointer.level}}{{pointer.tabNumber}}{{i}}">Photo</a></li>
+                            <li ng-show="photoCheckbox" class=""><a data-toggle="tab" href="#photo{{pointer.level}}{{pointer.tabNumber}}{{i}}">Photo</a></li>
                             <li ng-show="videoCheckbox"><a data-toggle="tab" href="#video{{pointer.level}}{{pointer.tabNumber}}{{i}}">Video</a></li>
                             <li ng-show="galleryCheckbox"><a data-toggle="tab" href="#gallery{{pointer.level}}{{pointer.tabNumber}}{{i}}">Gallery</a></li>
                             <li ng-show="contactCheckbox"><a data-toggle="tab" href="#contact{{pointer.level}}{{pointer.tabNumber}}{{i}}">Contact</a></li>
-                            
                         </ul>
-<!-- photos -->                     
                         <div class="tab-content">
-                            <div id="photo{{pointer.level}}{{pointer.tabNumber}}{{i}}" class="tab-pane fade in active" ng-show="photoCheckbox">
+<!-- photos -->
+                            <div id="photo{{pointer.level}}{{pointer.tabNumber}}{{i}}" class="tab-pane fade" ng-show="photoCheckbox">
                                 <label for="exampleInputFile" class="col-sm-12 select-pictures-label">Select up to 3 pictures from a disc:</label>
                                 <add-pictures model="pointer.scope.tab[i].pictures" max-pictures="constants.maxPictures" gallery="false"></add-pictures>
                             </div>

@@ -18,7 +18,7 @@
         function text(){tinymce.init({selector:'textarea-wysiwyg'});}
        
     </script>
-    <title>Epic Mockup</title>
+    <title>Epic!</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
     <link rel="stylesheet" href="css/style.css"/>
 </head>
@@ -72,9 +72,9 @@
         </form>
 
         <form role="form" class="col-sm-6 ">
-            <div  ng-repeat="tab in mainTabs.tab"  class="submenu second">
+            <div  ng-repeat="tab in mainTabs.tab"  class="submenu">
                 <div class="submenu-tab-{{$index}} submenu-tab  col-sm-12"  ng-show="(mainTabs.tab[$index].numberOfTabs!=0) && ($index==mainTabs.activeMainTab) && (mainTabs.tab[$index].subtabsFlag ==true)">
-                  <div class="quest ">
+                  <div class="quest second">
                     <tab name = "tab"   index ="$index" ></tab>
                   </div>
               </div>

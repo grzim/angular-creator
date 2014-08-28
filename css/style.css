@@ -5,13 +5,13 @@
   background-color: rgba(109,190,147,1);
 }
 .submenu-tab-6 .panel-body {
-  background-color: rgba(109,190,147,1);
+  background-color: rgba(109,190,147, 0.6);
 }
 .panel-heading.main-subtabs-6 {
   background-color: rgba(109,190,147,1);
 }
 .panel-body.main-subtabs-6 {
-  background-color: rgba(109,190,147,1);
+  background-color: rgba(109,190,147, 0.6);
 }
 .submenu-tab-5 {
   background-color: rgba(181, 133, 0, 1);
@@ -20,13 +20,13 @@
   background-color: rgba(181, 133, 0, 1);
 }
 .submenu-tab-5 .panel-body {
-  background-color: rgba(181, 133, 0, 1);
+  background-color: rgba(181, 133, 0,  0.6);
 }
 .panel-heading.main-subtabs-5 {
   background-color: rgba(181, 133, 0, 1);
 }
 .panel-body.main-subtabs-5 {
-  background-color: rgba(181, 133, 0, 1);
+  background-color: rgba(181, 133, 0,  0.6);
 }
 .submenu-tab-4 {
   background-color: rgba(178, 121, 83, 1);
@@ -35,13 +35,13 @@
   background-color: rgba(178, 121, 83, 1);
 }
 .submenu-tab-4 .panel-body {
-  background-color: rgba(178, 121, 83, 1);
+  background-color: rgba(178, 121, 83,  0.6);
 }
 .panel-heading.main-subtabs-4 {
   background-color: rgba(178, 121, 83, 1);
 }
 .panel-body.main-subtabs-4 {
-  background-color: rgba(178, 121, 83, 1);
+  background-color: rgba(178, 121, 83,  0.6);
 }
 .submenu-tab-3 {
   background-color: rgba(155, 158, 37, 1);
@@ -50,13 +50,13 @@
   background-color: rgba(155, 158, 37, 1);
 }
 .submenu-tab-3 .panel-body {
-  background-color: rgba(155, 158, 37, 1);
+  background-color: rgba(155, 158, 37,  0.6);
 }
 .panel-heading.main-subtabs-3 {
   background-color: rgba(155, 158, 37, 1);
 }
 .panel-body.main-subtabs-3 {
-  background-color: rgba(155, 158, 37, 1);
+  background-color: rgba(155, 158, 37,  0.6);
 }
 .submenu-tab-2 {
   background-color: rgba(226, 182, 52, 1);
@@ -65,13 +65,13 @@
   background-color: rgba(226, 182, 52, 1);
 }
 .submenu-tab-2 .panel-body {
-  background-color: rgba(226, 182, 52, 1);
+  background-color: rgba(226, 182, 52,  0.6);
 }
 .panel-heading.main-subtabs-2 {
   background-color: rgba(226, 182, 52, 1);
 }
 .panel-body.main-subtabs-2 {
-  background-color: rgba(226, 182, 52, 1);
+  background-color: rgba(226, 182, 52,  0.6);
 }
 .submenu-tab-1 {
   background-color: rgba(99, 109, 109, 1);
@@ -80,13 +80,13 @@
   background-color: rgba(99, 109, 109, 1);
 }
 .submenu-tab-1 .panel-body {
-  background-color: rgba(99, 109, 109, 1);
+  background-color: rgba(99, 109, 109,  0.6);
 }
 .panel-heading.main-subtabs-1 {
   background-color: rgba(99, 109, 109, 1);
 }
 .panel-body.main-subtabs-1 {
-  background-color: rgba(99, 109, 109, 1);
+  background-color: rgba(99, 109, 109,  0.6);
 }
 .submenu-tab-0 {
   background-color: rgba(177, 160, 113, 1);
@@ -95,13 +95,13 @@
   background-color: rgba(177, 160, 113, 1);
 }
 .submenu-tab-0 .panel-body {
-  background-color: rgba(177, 160, 113, 1);
+  background-color: rgba(177, 160, 113, 0.6);
 }
 .panel-heading.main-subtabs-0 {
   background-color: rgba(177, 160, 113, 1);
 }
 .panel-body.main-subtabs-0 {
-  background-color: rgba(177, 160, 113, 1);
+  background-color: rgba(177, 160, 113, 0.6);
 }
 .panel-body .hint.alert {
   margin-bottom: 2px;
@@ -164,6 +164,31 @@ main-title .tab-name {
   overflow: hidden;
   margin-top: -50%;
 }
+.tab-header-arrow {
+  padding-left: 25px;
+}
+.arrows-box {
+  position: absolute;
+  padding-left: 2px;
+  z-index: 100;
+}
+.arrows-box .glyphicon {
+  display: block;
+  cursor: pointer;
+}
+.arrows-box .glyphicon:hover {
+  color: #ffd000;
+}
+.arrows-box .up {
+  padding-left: 3px;
+}
+.arrows-box .down {
+  padding-left: 4px;
+}
+.move-text {
+  font-size: 8px;
+  color: #a94722;
+}
 .page-top-nav {
   background-color: #a94722;
   padding-top: 5px;
@@ -188,6 +213,12 @@ main-title .tab-name {
 .blank-top {
   opacity: 1;
   margin-top: 30px;
+}
+.panel-anchor {
+  cursor: pointer;
+}
+.panel-anchor:hover {
+  text-decoration: none;
 }
 .hint-button {
   font-size: 1em;
@@ -310,20 +341,20 @@ main-title .tab-name {
   }
 */
 }
+.quest-container .quest {
+  padding-top: 5px;
+  border-radius: 10px;
+}
+.quest-container .submenu-tab {
+  border-radius: 10px;
+}
 .quest-container .first {
   padding-top: 10px;
   background: #a94722;
   border-radius: 10px;
 }
 .quest-container .second {
-  border-radius: 10px;
-  background-color: #ffffff;
-}
-.quest-container .second .submenu-tab {
-  border-radius: 10px;
-}
-.quest-container .quest {
-  border-radius: 10px;
+  padding-top: 5px;
 }
 .quest-container .submenu-tab {
   position: absolute;
@@ -430,7 +461,8 @@ main-title .tab-name {
   padding: 0;
 }
 .quest-container .drop-container .drop-images {
-  margin-right: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
   border: 2px dashed #471e11;
 }
 .quest-container .drop-container .drop-images.drag-over {

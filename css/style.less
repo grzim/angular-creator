@@ -28,6 +28,8 @@
 
 @main-tab-body-color: rgb(169,71,34);
 
+
+
 @main-tabs-colors: 'rgba(177, 160, 113, 1)',
                         'rgba(99, 109, 109, 1)',
                         'rgba(226, 182, 52, 1)',
@@ -36,7 +38,13 @@
                         'rgba(181, 133, 0, 1)',
                         'rgba(109,190,147,1)';
 
-
+@main-tabs-body-colors: 'rgba(177, 160, 113, 0.6)',
+'rgba(99, 109, 109,  0.6)',
+'rgba(226, 182, 52,  0.6)',
+'rgba(155, 158, 37,  0.6)',
+'rgba(178, 121, 83,  0.6)',
+'rgba(181, 133, 0,  0.6)',
+'rgba(109,190,147, 0.6)';
 
 
 .makeTitles(@main-tabs-num);
@@ -52,7 +60,7 @@
 
         }
         .panel-body {
-            background-color: e(extract(@main-tabs-colors, @i));
+            background-color: e(extract(@main-tabs-body-colors, @i));
 
         }
     }
@@ -60,8 +68,7 @@
       background-color: e(extract(@main-tabs-colors, @i));;
     }
     .panel-body.main-subtabs-@{title-value} {
-      background-color: e(extract(@main-tabs-colors, @i));
-
+      background-color: e(extract(@main-tabs-body-colors, @i));
     }
  
      // next iteration
@@ -160,7 +167,31 @@ main-title{
   margin-top: -50%;
 }
 
-
+.tab-header-arrow{
+  padding-left:25px;
+}
+.arrows-box{
+  position:absolute;
+  padding-left:2px;
+  z-index:100;
+  .glyphicon{
+    display:block;
+    cursor: pointer;
+    &:hover{
+      color: @button-images-upload-body-hover-color;
+    }
+  }
+  .up{
+    padding-left:3px;
+  }
+  .down{
+    padding-left:4px;
+  }
+}
+.move-text{
+  font-size:8px;
+  color:@button-images-upload-body-color;
+}
 .page-top-nav{
   background-color: @main-tab-body-color;
   padding-top: 5px;
@@ -193,7 +224,13 @@ main-title{
 .page{
 
 }
+.panel-anchor{
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+  }
 
+}
 .hint-button{
   font-size: 1em;
   color: @hint-button-disabled;
@@ -297,22 +334,25 @@ main-title{
   padding-top: 15px;
   padding-bottom: 10px;
   background-color:  @quest-body-color;
+  .quest{
+    padding-top:5px;
+    border-radius: 10px;
+
+  }
+  .submenu-tab{
+    border-radius: 10px;
+  }
   .first{
     padding-top: 10px;
     background:@main-tab-body-color;
     border-radius: 10px;
   }
   .second{
-    border-radius: 10px;
-    background-color: rgba(255,255,255,1);
-    .submenu-tab{
-      border-radius: 10px;
-    }
+    padding-top:5px;
+
   }
 
-  .quest{
-    border-radius: 10px;
-  }
+
 
 
 
@@ -430,7 +470,8 @@ main-title{
     margin-bottom: 5px;
     padding:0;
     .drop-images{
-      margin-right:10px;
+      padding: 5px;
+      margin-bottom:10px;
       border: 2px dashed @drop-images-color;
       &.drag-over{
         background-color: @drop-images-on-drop;
