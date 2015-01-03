@@ -1,12 +1,6 @@
-The aim of the project is to create an UI for gathering data which will be stored and rendered into diffrient layout templates.
-Project consist of 3 parts:
-1) Create an interface and MVC architecture to gather and store data, in a form that will be accessible for templates controllers.
-2) Create templates that will work with the data
-3) Create server side
+The aim of the project is to create a fractal form, what means the structure when you can create a form with subforms using just one controller (thanks to such an approach you can create an infinite number of subforms). 
 
-Current state:
-  Polishing (1)
 
-Working demo:
-  http://www.pureepic.eu/angular/creator
 
+Demo:
+  http://www.pureepic.eu/angular/creator (project suspended)
