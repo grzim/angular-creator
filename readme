@@ -1,6 +1,4 @@
-The aim of the project is to create a fractal form, what means the structure when you can create a form with subforms using just one controller (thanks to such an approach you can create an infinite number of subforms). 
-
-
+A from to collect data about a webpage
 
 Demo:
   http://www.pureepic.eu/angular/creator (project suspended)
